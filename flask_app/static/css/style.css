@@ -1,120 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Courier+Prime&family=Roboto:wght@500&family=Rubik+Distressed&display=swap');
 
-
-body{
-    background-color: rgb(241, 238, 238);
-    
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.onefour{
-    font-size: 1.4em;
-}
-
-#font{
-    font-family: 'Balsamiq Sans', cursive;
-    font-family: 'Courier Prime', monospace;
-    font-family: 'Roboto', sans-serif;
-    font-family: 'Rubik Distressed', cursive;
-}
-.artist_title{
-    width: 70vw;
-    margin: 0 auto;
-}
-.artcolor{
+#navBar {
+    width: 100vw;
+    height: 150px;
     background-color: black;
-    padding: 5px;
-}
-
-.artpagetext{
-    color: white;
-    text-decoration: none;
-}
-
-#navbox{
-    width: 80vw;
-}
-
-.whitetext {
-    color: white;
-}
-
-.navbar {
-    background-color: black;
-}
-#leftart{
-    width: 80vw;
-    margin: 10px auto;
-}
-
-#mainbox {
+    padding: 50px;
+    box-sizing: border-box;
     display: flex;
-    justify-content: space-evenly;
-}
-
-.dojotitle{
-    
-    margin: 20px;
-    text-align: center;
-}
-
-.bluebutton {
-    background-color: blue;
-    color: white;
-}
-
-.cleanerform {
-    display: flex;
-    flex-direction: column;
-}
-
-.codered {
-    color: red;
-}
-
-.title{
-    color: purple;
-    margin: 20px 50px;
-}
-
-#artists {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 70vw;
-    gap: 50px;
-}
-
-#topnews{
-    /* background-color: #3B1F2B; */
-    width: 60vw;
-}
-
-#showartist{
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-#artistnews{
-    width: 70vw;
-    margin: 0 auto;
-}
-
-#favebox{
-    
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 70vw;
-    gap: 50px;
-    margin: 0 auto;
-}
-
-
-#articlepage{
-    display: flex;
-    flex-direction: column;
-    width: 70vw;
-    margin: 20px auto;
+#PopUpNewsLogo {
+    color: white;
+    font-size: 36px;
+    font-family: 'Bebas Neue', sans-serif;
 }
