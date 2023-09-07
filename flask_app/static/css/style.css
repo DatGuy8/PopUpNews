@@ -6,19 +6,50 @@
     padding: 0;
 }
 
-#navBar {
+/* BASE.HTML */
+
+#topNav {
     width: 100vw;
-    height: 150px;
+    height: 125px;
     background-color: black;
-    padding: 50px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#PopUpNewsLogo {
+#bottomNav{
+    width: 100vw;
+    height:40px;
+    background-color: black;
+    border-top: 1px solid white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navLinks{
+    width:50%;
+}
+#navLinks ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+#navLinks ul li a{
+    
+    color: #b3b3b3;
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+
+#PopUpNewsLogo a{
     color: white;
     font-size: 36px;
     font-family: 'Bebas Neue', sans-serif;
+    text-decoration: none;
 }
+
+/* BASE.HTML END */
+
