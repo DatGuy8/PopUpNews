@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Headland+One&display=swap');
+
+/* Custom properties */
 
 
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Headland One', serif;
+    box-sizing: border-box;
 }
 
 /* BASE.HTML */
@@ -54,6 +59,16 @@
 /* BASE.HTML END */
 /* DASHBOARD.HTML */
 
+.mt3rem{
+    margin-top:3rem;
+}
+
+.page-width-sizing{
+    width: min(85%,100rem);
+    margin-inline: auto;
+    
+}
+
 .main-content{
     margin-top: 3rem;
 }
@@ -61,8 +76,6 @@
 .grid-container-12{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    width:min(85%, 100rem);
-    margin-inline: auto;
     gap: 1rem;
 }
 
@@ -80,7 +93,19 @@
 }
 
 .user-widget{
-    background-color: #2b2b2b;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-widget img{
+    display: inline-block;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
 
 .grid-start-4{
@@ -88,10 +113,67 @@
     grid-column-end: 10;
 }
 
-.img-container img{
-    vertical-align: bottom;
+.grid-row-end-2{
+    grid-column-start: 10;
+    grid-column-end: 13 ;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    
 }
 
+.top-articles{
+    margin-top: 1rem;
+    height: 100px;
+}
 
+.swiper {
+    width: min(85%,100rem);
+    height: 300px;
+}
+
+.artist-img-container{
+    width:200px;
+    height: 200px;
+    margin-inline: auto;
+}
+
+.artist-img-container img{
+    width: 100%;
+}
+
+.popular-artist-div h2{
+    margin:1rem auto;
+}
+
+.article-box{
+    height:200px;
+    
+    width: 70%;
+    display: flex;
+    gap:3rem;
+}
+
+.all-articles{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.articles-img-box{
+    width:50%;
+    
+    
+}
+.articles-img-box img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    
+}
+
+.articles-info{
+    width: 50%;
+    background-color: aliceblue;
+}
 /* DASHBOARD.HTML END*/
 

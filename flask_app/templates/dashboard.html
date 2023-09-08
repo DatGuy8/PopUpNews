@@ -1,12 +1,17 @@
 {% extends 'base.html' %} {% block title %}POP UP NEWS{% endblock %} {% block
 content %}
 <div class="main-content">
-    <div class="grid-container-12">
-        <div class="grid-span-3 user-widget">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut
-            accusantium, hic saepe asperiores aspernatur ullam, facilis soluta
-            vel qui pariatur error accusamus iste iure magni itaque, adipisci
-            porro tempora.
+    <!-- Top Div -->
+    <div class="grid-container-12 page-width-sizing">
+        <div class="grid-span-3">
+            <div class="user-widget">
+                <img
+                    src="{{ url_for('static', filename='imgs/johntran1.jpg') }}"
+                />
+                <p>DatGuy</p>
+                <p># of Favorite Artists</p>
+                <p># of Favorite Articles</p>
+            </div>
         </div>
         <div class="grid-span-6">
             <article>
@@ -14,6 +19,7 @@ content %}
                     src="https://media.pitchfork.com/photos/6301afc50aff42ca4564a00c/2:1/w_1600,c_limit/drake.jpg"
                     width="100%"
                 />
+
                 <h1>
                     Drake Announces Release Date for New Album For All the Dogs
                 </h1>
@@ -21,21 +27,13 @@ content %}
                 <p>September 6, 2023</p>
             </article>
         </div>
-        <div class="grid-span-3">
-            <h3>Top Articles</h3>
-            <hr>
-            {% for i in range(4) %}
-            <article>
-                <h1>Article title</h1>
-                <p>website</p>
-                <hr>
-            </article>
-            {% endfor %}
-        </div>
         <div class="grid-start-4">
             <article class="grid-container-6">
                 <div class="grid-span-3">
-                    <h2>The Rolling Stones Detail Hackney Diamonds, First New Album of Originals in 18 Years</h2>
+                    <h2>
+                        The Rolling Stones Detail Hackney Diamonds, First New
+                        Album of Originals in 18 Years
+                    </h2>
                     <p>www.pitchfork.com</p>
                     <p>September 5, 2023</p>
                 </div>
@@ -43,12 +41,205 @@ content %}
                     <img
                         src="https://media.pitchfork.com/photos/64f88808c7986e9af64dbb28/2:1/w_1600,c_limit/The-Rolling-Stones.jpg"
                         width="100%"
-                        
                     />
                 </div>
             </article>
         </div>
+        <div class="grid-row-end-2">
+            <h3>Top Articles</h3>
+            <hr />
+            {% for i in range(5) %}
+            <article class="top-articles">
+                <h1>Article title</h1>
+                <p>website</p>
+                <hr />
+            </article>
+            {% endfor %}
+        </div>
     </div>
+    <hr class="page-width-sizing mt3rem" />
+    
+    <div class="page-width-sizing popular-artist-div"><h2>POPular Artists</h2></div>
+    <!-- Middle div Most liked artists -->
+    <!-- Slider main container -->
+    <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="artist-img-container">
+                    <img
+                        src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                    />
+                    <p>Posty</p>
+                </div>
+            </div>
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="artist-img-container">
+                    <img
+                        src="https://www.theaudiodb.com/images/media/artist/thumb/vpxqtu1484769349.jpg"
+                    />
+                </div>
+            </div>
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="artist-img-container">
+                    <img
+                        src="https://www.theaudiodb.com/images/media/artist/thumb/txuxsy1476547962.jpg"
+                    />
+                </div>
+            </div>
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="artist-img-container">
+                    <img
+                        src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                    />
+                </div>
+            </div>
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="artist-img-container">
+                    <img
+                        src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                    />
+                </div>
+            </div>
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="artist-img-container">
+                    <img
+                        src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                    />
+                </div>
+            </div>
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="artist-img-container">
+                    <img
+                        src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                    />
+                </div>
+            </div>
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="artist-img-container">
+                    <img
+                        src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                    />
+                </div>
+            </div>
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="artist-img-container">
+                    <img
+                        src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                    />
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <div class="mt3rem">
+        <div class="page-width-sizing all-articles">
+            <h2>Latest Music News Articles</h2>
+            <article class="article-box">
+                <div class="articles-img-box">
+                    <img src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"/>
+                </div>
+                <div class="articles-info">
+                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
+                    <p>www.pitchfork.com</p>
+                    <p>September 3, 2023</p>
+                </div>
+            </article>
+            <article class="article-box">
+                <div class="articles-img-box">
+                    <img src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"/>
+                </div>
+                <div class="articles-info">
+                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
+                    <p>www.pitchfork.com</p>
+                    <p>September 3, 2023</p>
+                </div>
+            </article>
+            <article class="article-box">
+                <div class="articles-img-box">
+                    <img src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"/>
+                </div>
+                <div class="articles-info">
+                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
+                    <p>www.pitchfork.com</p>
+                    <p>September 3, 2023</p>
+                </div>
+            </article>
+            <article class="article-box">
+                <div class="articles-img-box">
+                    <img src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"/>
+                </div>
+                <div class="articles-info">
+                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
+                    <p>www.pitchfork.com</p>
+                    <p>September 3, 2023</p>
+                </div>
+            </article>
+            <article class="article-box">
+                <div class="articles-img-box">
+                    <img src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"/>
+                </div>
+                <div class="articles-info">
+                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
+                    <p>www.pitchfork.com</p>
+                    <p>September 3, 2023</p>
+                </div>
+            </article>
+            <article class="article-box">
+                <div class="articles-img-box">
+                    <img src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"/>
+                </div>
+                <div class="articles-info">
+                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
+                    <p>www.pitchfork.com</p>
+                    <p>September 3, 2023</p>
+                </div>
+            </article>
+            <article class="article-box">
+                <div class="articles-img-box">
+                    <img src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"/>
+                </div>
+                <div class="articles-info">
+                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
+                    <p>www.pitchfork.com</p>
+                    <p>September 3, 2023</p>
+                </div>
+            </article>
+            <article class="article-box">
+                <div class="articles-img-box">
+                    <img src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"/>
+                </div>
+                <div class="articles-info">
+                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
+                    <p>www.pitchfork.com</p>
+                    <p>September 3, 2023</p>
+                </div>
+            </article>
+        </div>
+        <div class="page-width-sizing">
+            
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}
