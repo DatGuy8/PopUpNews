@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{% block title %}{% endblock %}</title>
-        <!-- CSS only -->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="{{ url_for('static', filename='css/style.css') }}"
-        />
-        
-        <!-- Swiper carousel -->
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-        />
-    </head>
 
-    <body>
-        <nav>
-            <div id="topNav">
-                <h1 id="PopUpNewsLogo"><a href="/dashboard">POP UP NEWS</a></h1>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+
+    <!-- Swiper carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <nav>
+        <div id="top-nav">
+            <h1 id="PopUpNews-Logo"><a href="/dashboard">POP UP NEWS</a></h1>
+        </div>
+        <div id="bottom-nav">
+            <div id="nav-links">
+                <ul>
+                    <li><a href="/users/1">My Page</a></li>
+                    <li><a href="/user/feed">Your Feed</a></li>
+                    <li><a href="/articles">Articles</a></li>
+                    <li><a href="/artists">Artists</a></li>
+                </ul>
             </div>
-            <div id="bottomNav">
-                <div id="navLinks">
-                    <ul>
-                        <li><a href="/profile">My Page</a></li>
-                        <li><a href="/user/feed">Your Feed</a></li>
-                        <li><a href="/articles">Articles</a></li>
-                        <li><a href="/artists">Artists</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        </div>
+    </nav>
 
-        {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
+    <div id="push"></div>
+    <footer id="footer">
+        <div class="page-width-sizing">
 
-        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-        <script src="{{url_for('static', filename='js/script.js')}}"></script>
-    </body>
+            <a href="#top-nav"
+            class="mt3rem">Back To Top</a>
+        </div>
+        <div class="page-width-sizing">
+            <p class="mt3rem">
+                @Copyright Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi vel tempore a dolore placeat animi!
+                Suscipit, perferendis repudiandae. Harum repellat reprehenderit dolor labore tempore id magni animi eos!
+                Corrupti, rerum!
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+</body>
+
 </html>

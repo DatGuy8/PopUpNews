@@ -16,3 +16,43 @@ def homepage():
 @app.route('/login')
 def login_page():
     return render_template('login_page.html')
+
+
+@app.route('/articles')
+def all_articles():
+    return render_template('articles_page.html')
+
+@app.route('/articles/{article_id}')
+def one_article_page():
+    return render_template('one_article_page.html')
+
+
+@app.route('/user/feed')
+def user_feed():
+    return render_template('user_feed.html')
+
+@app.route('/users/{user_id}')
+def profile_page():
+    return render_template('profile_page.html')
+
+@app.route('/artists')
+def all_artists_page():
+    return render_template('all_artist_page.html')
+
+
+@app.route('/artists/{aritst_id}')
+def one_artist_page():
+    return render_template('single_artist_page.html')
+
+
+@app.route('/admin/users')
+def admin_users():
+    return render_template('admin_users.html')
+
+@app.route('/admin/articles')
+def admin_articles():
+    return render_template('admin_articles.html')
+
+@app.route('/admin/artists')
+def admin_artists():
+    return render_template('admin_artists.html')
