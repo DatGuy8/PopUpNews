@@ -37,7 +37,7 @@ def profile_page():
 
 @app.route('/artists')
 def all_artists_page():
-    return render_template('all_artist_page.html')
+    return render_template('all_artists_page.html')
 
 
 @app.route('/artists/{aritst_id}')

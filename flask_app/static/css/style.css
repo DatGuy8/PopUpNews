@@ -292,9 +292,44 @@
     color: #f7f7f7;
 }
 .filter-button:hover{
-    
     background-color: black;
-    
 }
 
 /* YOUR FEED END */
+
+/* ALL ARTISTS PAGE */
+.search-div{
+    width: 100%;
+
+}
+
+.search-artist-form{
+    margin-top: 1rem;
+    margin-inline: auto;
+    width: 300px;
+}
+.search-artist-form input{
+    padding: 10px;
+    border-radius: .5rem;
+}
+.search-artist-form button{
+    padding: 10px;
+    border-radius: .5rem;
+    background-color: #2b2b2b;
+    color: whitesmoke;
+}
+
+.all-artists-div{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.one-artist{
+    width:20%;
+    height: 250px;
+    background-color: blanchedalmond;
+}
+
+/* ALL ARTISTS PAGE END */
