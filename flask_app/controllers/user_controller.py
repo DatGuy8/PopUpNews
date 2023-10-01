@@ -31,8 +31,8 @@ def one_article_page():
 def user_feed():
     return render_template('user_feed.html')
 
-@app.route('/users/{user_id}')
-def profile_page():
+@app.route('/users/<int:user_id>')
+def profile_page(user_id):
     return render_template('profile_page.html')
 
 @app.route('/artists')
@@ -40,8 +40,8 @@ def all_artists_page():
     return render_template('all_artists_page.html')
 
 
-@app.route('/artists/{aritst_id}')
-def one_artist_page():
+@app.route('/artists/<int:artist_id>')
+def one_artist_page(artist_id):
     return render_template('single_artist_page.html')
 
 

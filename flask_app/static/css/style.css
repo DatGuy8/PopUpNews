@@ -25,108 +25,112 @@
     justify-content: center;
 }
 
-#bottom-nav{
+#bottom-nav {
     width: 100vw;
-    height:40px;
+    height: 40px;
     background-color: black;
     border-top: 1px solid white;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#nav-links{
-    width:50%;
+#nav-links {
+    width: 50%;
 }
-#nav-links ul{
+
+#nav-links ul {
     display: flex;
     justify-content: space-between;
     list-style: none;
 }
-#nav-links ul li a{
-    
+
+#nav-links ul li a {
+
     color: #b3b3b3;
     text-decoration: none;
     font-family: 'Bebas Neue', sans-serif;
 }
 
-#nav-links ul li a:hover{
-    
+#nav-links ul li a:hover {
+
     color: white;
-    
+
 }
 
 
-#PopUpNews-Logo a{
+#PopUpNews-Logo a {
     color: white;
     font-size: 3rem;
     font-family: 'Bebas Neue', sans-serif;
     text-decoration: none;
 }
-#PopUpNews-Logo a:hover{
+
+#PopUpNews-Logo a:hover {
     font-size: 3.1rem;
-    
-    
+
+
 }
 
-#footer{
+#footer {
     margin-top: 3rem;
-    min-width:100%;
+    min-width: 100%;
     height: 200px;
     background-color: black;
     margin-bottom: -200px;
 }
 
-#push{
-    height:200px;
+#push {
+    height: 200px;
 }
 
-#footer div{
+#footer div {
     display: flex;
     justify-content: center;
 }
 
-#footer div p{
+#footer div p {
     color: #b3b3b3;
 }
 
 /* BASE.HTML END */
 /* DASHBOARD.HTML */
 
-.mt3rem{
-    margin-top:3rem;
-}
-
-.page-width-sizing{
-    width: min(85%,100rem);
-    margin-inline: auto;
-    
-}
-
-.main-content{
+.mt3rem {
     margin-top: 3rem;
 }
 
-.grid-container-12{
+.page-width-sizing {
+    width: min(85%, 100rem);
+    margin-inline: auto;
+
+}
+
+.main-content {
+    margin-top: 3rem;
+}
+
+.grid-container-12 {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 1rem;
 }
 
-.grid-container-6{
-    display:grid;
+.grid-container-6 {
+    display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap:1rem;
+    gap: 1rem;
 }
 
-.grid-span-3{
+.grid-span-3 {
     grid-column: span 3;
 }
-.grid-span-6{
+
+.grid-span-6 {
     grid-column: span 6;
 }
 
-.user-widget{
+.user-widget {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -134,7 +138,7 @@
     gap: 1rem;
 }
 
-.user-widget img{
+.user-widget img {
     display: inline-block;
     border-radius: 50%;
     width: 100px;
@@ -142,194 +146,265 @@
     object-fit: cover;
 }
 
-.grid-start-4{
+.grid-start-4 {
     grid-column-start: 4;
     grid-column-end: 10;
 }
 
-.grid-row-end-2{
+.grid-row-end-2 {
     grid-column-start: 10;
-    grid-column-end: 13 ;
+    grid-column-end: 13;
     grid-row-start: 1;
     grid-row-end: 3;
-    
+
 }
 
-.top-articles{
+.top-articles {
     margin-top: 1rem;
     height: 100px;
 }
 
 .swiper {
-    width: min(85%,100rem);
+    width: min(85%, 100rem);
     height: 300px;
 }
 
-.artist-img-container{
-    width:200px;
+.artist-img-container {
+    width: 200px;
     height: 200px;
     margin-inline: auto;
 }
 
-.artist-img-container img{
+.artist-img-container img {
     width: 100%;
 }
 
-.popular-artist-div h2{
-    margin:1rem auto;
+.popular-artist-div h2 {
+    margin: 1rem auto;
 }
 
-.article-box{
-    height:200px;
-    
+.article-box {
+    height: 200px;
+
     width: 70%;
     display: flex;
-    gap:3rem;
+    gap: 3rem;
 }
 
-.all-articles{
+.all-articles {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.articles-img-box{
-    width:50%;
+.articles-img-box {
+    width: 50%;
 }
-.articles-img-box img{
+
+.articles-img-box img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    
+
 }
 
-.articles-info{
+.articles-info {
     width: 50%;
     background-color: aliceblue;
 }
+
 /* DASHBOARD.HTML END*/
 
 /* ARTICLES PAGE */
-.dark-main-container{
-    width:100%;
-    height: 30rem;
+.dark-main-container {
+    width: 100%;
+    
     background-color: #2b2b2b;
     display: flex;
     align-items: center;
-}
-
-.half-content{
-    width: 100%;
-    color: white;
-}
-
-
-@media screen and (min-width: 768px){
-    .dark-main-content{
-        display: flex;
-    }
     
-    .half-content{
-        width: 50%;
-        height: 25rem;
-    }
-    .half-content:last-child{
-        display: flex;
-        flex-direction: column;
-        gap:1rem;
-        padding: 3rem;
-    }
 }
 
-.text-center{
-    text-align: center;
-}
-
-.text-smaller-on-med{
-    font-size: large;
-}
-
-.half-content img{
-    width: 100%;
+.half-content {
+    height: 100%;
+    color: white;
     object-fit: cover;
 }
 
 
+@media screen and (min-width: 768px) {
+    .dark-main-content {
+        display: flex;
+        
+    }
 
-.small-4-featured{
-    display:flex;
+    .half-content {
+        width: 50%;
+        height: 25rem;
+        object-fit:contain;
+        display:flex;
+        align-items: center;
+    }
+
+    .half-content:last-child {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 3rem;
+        flex-wrap: auto;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-smaller-on-med {
+    font-size: large;
+}
+
+.half-content img {
+    width: 100%;
+    height: 80%;
+    object-fit: contain;
+}
+
+
+
+.small-4-featured {
+    display: flex;
     justify-content: space-between;
 }
-.small-4-featured > article{
-    width:18rem;
+
+.small-4-featured>article {
+    width: 18rem;
 }
-.small-4-featured article div img{
+
+.small-4-featured article div img {
     width: 100%;
 }
 
-.small-featured-article-info{
-    display:flex;
+.small-featured-article-info {
+    display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.genre-select{
+.genre-select {
     width: 10rem;
 }
 
 /* ARTICLES PAGE END */
 
 /* YOUR FEED */
-.mt2rem{
+.mt2rem {
     margin-top: 2rem;
 }
 
-.filter-button{
+.filter-button {
     font-size: 1.1rem;
     padding: .3rem;
     border-radius: 0.5rem;
     background-color: #2b2b2b;
     color: #f7f7f7;
 }
-.filter-button:hover{
+
+.filter-button:hover {
     background-color: black;
 }
 
 /* YOUR FEED END */
 
 /* ALL ARTISTS PAGE */
-.search-div{
+.search-div {
     width: 100%;
 
 }
 
-.search-artist-form{
+.search-artist-form {
     margin-top: 1rem;
     margin-inline: auto;
     width: 300px;
 }
-.search-artist-form input{
+
+.search-artist-form input {
     padding: 10px;
     border-radius: .5rem;
 }
-.search-artist-form button{
+
+.search-artist-form button {
     padding: 10px;
     border-radius: .5rem;
     background-color: #2b2b2b;
     color: whitesmoke;
 }
 
-.all-artists-div{
+.all-artists-div {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-top: 1rem;
 }
-
-.one-artist{
-    width:20%;
+.one-artist {
+    width: 200px;
     height: 250px;
     background-color: blanchedalmond;
 }
 
+@media screen and (max-width:480px){
+    .one-artist{   
+        width: 45%;
+        height: 250px;
+        background-color: blue;
+    }
+}
+
+.one-artist img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.artist-info .text-center{
+    display: flex;
+    flex-wrap: auto;
+}
+
+.search-results{
+    width: 100%;
+}
+
+.pagination{
+    width: fit-content;
+    margin: 1rem auto;
+
+}
+
+/* Pagination links */
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    
+}
+
+/* Style the active/current link */
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
 /* ALL ARTISTS PAGE END */
+/* SINGLE ARTIST PAGE */
+
+
+
+/* SINGLE ARTIST PAGE End */
