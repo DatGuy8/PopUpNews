@@ -323,12 +323,14 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
 }
 
 .one-artist{
-    width:20%;
-    height: 250px;
+    flex: 0 1 auto;
+    width: 200px;
+    height: 200px;
     background-color: blanchedalmond;
 }
 
