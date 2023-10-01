@@ -33,6 +33,15 @@
             <input type="text" placeholder="Look up an artist to add"><button type="submit">Search</button>
 
         </div>
+        <h2 class="text-center">Results for Posty</h2>
+        <div class="all-artists-div">
+            <div class="one-artist">
+
+                <img src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg">
+                <div class="text-center"><p>Post Malone</p></div>
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -40,9 +49,24 @@
     <h2 class="text-center">All Artists</h2>
     <div class="all-artists-div">
         {%for i in range(10)%}
-        <div class="one-artist"></div>
+
+        <div class="one-artist">
+            <img src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg">
+            <div class="text-center"><p>Post Malone</p></div>
+        </div>
         {%endfor%}
     </div>
+    <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a class="active" href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+    </div>
+
 </div>
 
 
