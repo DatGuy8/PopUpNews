@@ -415,7 +415,7 @@
 
 
 /* SINGLE ARTIST PAGE End */
-=======
+
 .small-4-featured{
     display:flex;
     justify-content: space-between;
@@ -492,6 +492,7 @@
     width: 200px;
     height: 200px;
     background-color: blanchedalmond;
+    margin: 10px;
 }
 
 /* ALL ARTISTS PAGE END */
