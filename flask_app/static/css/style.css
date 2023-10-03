@@ -499,6 +499,23 @@
 /* ALL ARTISTS PAGE END */
 /* ONE ARTICLE PAGE */
 .one-article-page-img{
+    width: 100%;
+}
+@media screen and (min-width:768px){
+    #main-one-article{
+        width: 100%;
+        display: flex;
+    }
+    
+    #left-one-article{
+        width: 75%;
+    }
+    
+    #right-one-article{
+        width: 25%;
+    }
     
 }
+
+
 /* ONE ARTICLE PAGE END*/
