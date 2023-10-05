@@ -216,7 +216,7 @@
     height: 100%;
     color: white;
     object-fit: cover;
-}
+
 
 @media screen and (min-width: 768px) {
     .dark-main-content {
@@ -239,6 +239,7 @@
         flex-wrap: auto;
     }
 }
+
 
 .text-center {
     text-align: center;
@@ -297,6 +298,7 @@
 }
 
 /* YOUR FEED END */
+
 
 /* ALL ARTISTS PAGE */
 .search-div {
