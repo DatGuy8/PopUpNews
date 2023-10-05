@@ -1,26 +1,31 @@
-{% extends 'base.html' %}
-
-{% block title %}Pop Up Articles{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block title %}Pop Up Articles{% endblock %} {%
+block content %}
 <div class="dark-main-container">
     <article class="page-width-sizing dark-main-content">
         <div class="half-content">
-            <img src="https://media.pitchfork.com/photos/64fb462d6351e19deab85296/2:1/w_1920,c_limit/Live-Nation-Entertainment.jpg"
-                alt="featured article pic">
+            <a href="/articles/1">
+                <img
+                    src="https://media.pitchfork.com/photos/64fb462d6351e19deab85296/2:1/w_1920,c_limit/Live-Nation-Entertainment.jpg"
+                    alt="featured article pic"
+                />
+            </a>
         </div>
         <div class="half-content">
-            <h1>Live Nation Entertainment Faces Wage Theft Lawsuit in California</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas asperiores cupiditate in id officia
-                placeat cum soluta aspernatur saepe tenetur illum, alias magni repudiandae totam odit dolore esse animi
-                corporis!</p>
-            <p>
-                www.billboard.com
-            </p>
+            <a href="/articles/1">
+                <h1>
+                    Live Nation Entertainment Faces Wage Theft Lawsuit in
+                    California
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Quas asperiores cupiditate in id officia placeat cum soluta
+                    aspernatur saepe tenetur illum, alias magni repudiandae
+                    totam odit dolore esse animi corporis!
+                </p>
+                <p>www.billboard.com</p>
+            </a>
         </div>
-
     </article>
-
 </div>
 
 <!-- Featured Articles -->
@@ -29,15 +34,18 @@
     {% for i in range(4) %}
     <article>
         <div>
-            <img src="https://media.pitchfork.com/photos/64fb3d4ff102d9dbdeb02d1f/2:1/w_1920,c_limit/Lil%20Baby.jpg">
+            <img
+                src="https://media.pitchfork.com/photos/64fb3d4ff102d9dbdeb02d1f/2:1/w_1920,c_limit/Lil%20Baby.jpg"
+            />
         </div>
         <div class="small-featured-article-info">
-            <h1 class="text-center text-smaller-on-med">Lil Baby cuts concert short in Memphis after shooting</h1>
+            <h1 class="text-center text-smaller-on-med">
+                Lil Baby cuts concert short in Memphis after shooting
+            </h1>
             <p class="text-center">www.pitchfork.com</p>
         </div>
     </article>
     {%endfor%}
-    
 </div>
 
 <!-- All ARTICLES -->
@@ -45,7 +53,6 @@
     <div class="page-width-sizing all-articles">
         <h2>Latest Music News Articles</h2>
         <div>
-
             <label for="genre">Genre: </label>
             <select class="genre-select">
                 <option>All</option>
@@ -63,7 +70,8 @@
         <article class="article-box">
             <div class="articles-img-box">
                 <img
-                    src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg" />
+                    src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"
+                />
             </div>
             <div class="articles-info">
                 <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
@@ -72,11 +80,8 @@
             </div>
         </article>
         {%endfor%}
-        
     </div>
-    <div class="page-width-sizing">
-
-    </div>
+    <div class="page-width-sizing"></div>
 </div>
 
 {% endblock %}

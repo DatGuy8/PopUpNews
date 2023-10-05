@@ -1,7 +1,68 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %}POP UP NEWS{% endblock %} {% block
+content %}
 
-{% block title %}POP UP NEWS{% endblock %}
+<div class="top-content-userpage">
+    <div class="left-block-userpage">
+        <div class="user-widget">
+            <img
+                src="{{ url_for('static', filename='imgs/johntran1.jpg') }}"
+                class="user-pic mt2rem"
+            />
+            <p>DatGuy</p>
+            <p># of Favorite Artists</p>
+            <p># of Favorite Articles</p>
+            <div class="">
+                <i class="fa-solid fa-square-plus"></i>
+                Add Friend
+            </div>
+        </div>
+    </div>
+    <div class="right-block-userpage">
+        <h2 class="text-center">John's Favorite Artists</h2>
+        <div class="fav-artists-userpage">
+            {%for i in range(10)%}
 
-{% block content %}
+            <div class="one-artist">
+                <img
+                    src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                />
+                <div class="text-center"><p>Post Malone</p></div>
+            </div>
+            {%endfor%}
+        </div>
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a class="active" href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+        </div>
+    </div>
+</div>
+<div class="all-articles div page-width-sizing padding-top-2">
+    <h2 class="text-center">Saved Articles</h2>
+    {% for i in range(10)%}
+            <article class="article-box">
+                <div class="articles-img-box">
+                    <img
+                        src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"
+                    />
+                </div>
+                <div class="articles-info">
+                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
+                    <p>www.pitchfork.com</p>
+                    <p>September 3, 2023</p>
+                    <div>
+                        123
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        145<i class="fa-solid fa-comment"></i>
+                    </div>
+                </div>
+            </article>
+            {%endfor%}
+</div>
 
 {% endblock %}

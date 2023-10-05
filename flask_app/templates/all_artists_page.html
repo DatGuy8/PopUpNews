@@ -1,42 +1,43 @@
-{% extends 'base.html' %}
-
-{% block title %}POP UP ARTISTS{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block title %}POP UP ARTISTS{% endblock %} {% block
+content %}
 <h1 class="text-center mt2rem">Top Artists</h1>
 <div class="swiper mt2rem">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
-
         <!-- Slides -->
         {% for i in range(8) %}
         <div class="swiper-slide">
             <div class="artist-img-container">
-                <img src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg" />
+                <img
+                    src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                />
                 <p>Posty</p>
             </div>
         </div>
         {%endfor%}
     </div>
 
-
     <!-- If we need navigation buttons -->
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
 </div>
 
-<h3 class="text-center">Dont See Your Favorite Artists?
-</h3>
+<h3 class="text-center">Dont See Your Favorite Artists?</h3>
 <div class="page-width-sizing">
     <div class="search-div">
         <div class="search-artist-form">
-            <input type="text" placeholder="Look up an artist to add"><button type="submit">Search</button>
+            <input type="text" placeholder="Look up an artist to add" /><button
+                type="submit"
+            >
+                Search
+            </button>
         </div>
         <h2 class="text-center">Results for Posty</h2>
         <div class="all-artists-div">
             <div class="one-artist">
-
-                <img src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg">
+                <img
+                    src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                />
                 <div class="text-center"><p>Post Malone</p></div>
             </div>
         </div>
@@ -47,8 +48,11 @@
     <h2 class="text-center">All Artists</h2>
     <div class="all-artists-div">
         {%for i in range(10)%}
+
         <div class="one-artist">
-            <img src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg">
+            <img
+                src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+            />
             <div class="text-center"><p>Post Malone</p></div>
         </div>
         {%endfor%}
@@ -64,6 +68,5 @@
         <a href="#">&raquo;</a>
     </div>
 </div>
-
 
 {% endblock %}

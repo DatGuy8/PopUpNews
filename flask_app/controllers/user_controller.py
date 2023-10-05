@@ -22,8 +22,8 @@ def login_page():
 def all_articles():
     return render_template('articles_page.html')
 
-@app.route('/articles/{article_id}')
-def one_article_page():
+@app.route('/articles/<int:article_id>')
+def one_article_page(article_id):
     return render_template('one_article_page.html')
 
 

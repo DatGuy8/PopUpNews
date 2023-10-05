@@ -1,17 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Headland+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Headland+One&display=swap");
 
 /* Custom properties */
-
 
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Headland One', serif;
+    font-family: "Headland One", serif;
     box-sizing: border-box;
 }
-
-
 
 /* BASE.HTML */
 
@@ -46,30 +43,24 @@
 }
 
 #nav-links ul li a {
-
     color: #b3b3b3;
     text-decoration: none;
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: "Bebas Neue", sans-serif;
 }
 
 #nav-links ul li a:hover {
-
     color: white;
-
 }
-
 
 #PopUpNews-Logo a {
     color: white;
     font-size: 3rem;
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: "Bebas Neue", sans-serif;
     text-decoration: none;
 }
 
 #PopUpNews-Logo a:hover {
     font-size: 3.1rem;
-
-
 }
 
 #footer {
@@ -103,7 +94,6 @@
 .page-width-sizing {
     width: min(85%, 100rem);
     margin-inline: auto;
-
 }
 
 .main-content {
@@ -138,7 +128,7 @@
     gap: 1rem;
 }
 
-.user-widget img {
+.user-pic {
     display: inline-block;
     border-radius: 50%;
     width: 100px;
@@ -156,7 +146,6 @@
     grid-column-end: 13;
     grid-row-start: 1;
     grid-row-end: 3;
-
 }
 
 .top-articles {
@@ -205,7 +194,6 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
-
 }
 
 .articles-info {
@@ -218,11 +206,10 @@
 /* ARTICLES PAGE */
 .dark-main-container {
     width: 100%;
-    
+
     background-color: #2b2b2b;
     display: flex;
     align-items: center;
-    
 }
 
 .half-content {
@@ -231,18 +218,16 @@
     object-fit: cover;
 }
 
-
 @media screen and (min-width: 768px) {
     .dark-main-content {
         display: flex;
-        
     }
 
     .half-content {
         width: 50%;
         height: 25rem;
-        object-fit:contain;
-        display:flex;
+        object-fit: contain;
+        display: flex;
         align-items: center;
     }
 
@@ -269,14 +254,12 @@
     object-fit: contain;
 }
 
-
-
 .small-4-featured {
     display: flex;
     justify-content: space-between;
 }
 
-.small-4-featured>article {
+.small-4-featured > article {
     width: 18rem;
 }
 
@@ -303,7 +286,7 @@
 
 .filter-button {
     font-size: 1.1rem;
-    padding: .3rem;
+    padding: 0.3rem;
     border-radius: 0.5rem;
     background-color: #2b2b2b;
     color: #f7f7f7;
@@ -318,7 +301,6 @@
 /* ALL ARTISTS PAGE */
 .search-div {
     width: 100%;
-
 }
 
 .search-artist-form {
@@ -329,12 +311,12 @@
 
 .search-artist-form input {
     padding: 10px;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
 }
 
 .search-artist-form button {
     padding: 10px;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     background-color: #2b2b2b;
     color: whitesmoke;
 }
@@ -347,38 +329,35 @@
     margin-top: 1rem;
 }
 .one-artist {
-    width: 200px;
     height: 250px;
-    background-color: blanchedalmond;
 }
 
-@media screen and (max-width:480px){
-    .one-artist{   
+@media screen and (max-width: 480px) {
+    .one-artist {
         width: 45%;
         height: 250px;
-        background-color: blue;
+        
     }
 }
 
-.one-artist img{
+.one-artist img {
     width: 100%;
-    height: 200px;
+
     object-fit: cover;
 }
 
-.artist-info .text-center{
+.artist-info .text-center {
     display: flex;
     flex-wrap: auto;
 }
 
-.search-results{
+.search-results {
     width: 100%;
 }
 
-.pagination{
+.pagination {
     width: fit-content;
     margin: 1rem auto;
-
 }
 
 /* Pagination links */
@@ -387,8 +366,7 @@
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    transition: background-color .3s;
-    
+    transition: background-color 0.3s;
 }
 
 /* Style the active/current link */
@@ -405,6 +383,185 @@
 /* ALL ARTISTS PAGE END */
 /* SINGLE ARTIST PAGE */
 
-
-
 /* SINGLE ARTIST PAGE End */
+
+.small-4-featured {
+    display: flex;
+    justify-content: space-between;
+}
+.small-4-featured > article {
+    width: 18rem;
+}
+.small-4-featured article div img {
+    width: 100%;
+}
+
+.small-featured-article-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.genre-select {
+    width: 10rem;
+}
+
+/* ARTICLES PAGE END */
+
+/* YOUR FEED */
+.mt2rem {
+    margin-top: 2rem;
+}
+
+.filter-button {
+    font-size: 1.1rem;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    background-color: #2b2b2b;
+    color: #f7f7f7;
+}
+.filter-button:hover {
+    background-color: black;
+}
+
+/* YOUR FEED END */
+
+/* ALL ARTISTS PAGE */
+.search-div {
+    width: 100%;
+}
+
+.search-artist-form {
+    margin-top: 1rem;
+    margin-inline: auto;
+    width: 300px;
+}
+.search-artist-form input {
+    padding: 10px;
+    border-radius: 0.5rem;
+}
+.search-artist-form button {
+    padding: 10px;
+    border-radius: 0.5rem;
+    background-color: #2b2b2b;
+    color: whitesmoke;
+}
+
+.all-artists-div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.one-artist {
+    
+    width: 200px;
+    height: fit-content;
+    background-color: blanchedalmond;
+    margin: 10px;
+}
+.one-artist img{
+    width: 100%;
+}
+
+/* ALL ARTISTS PAGE END */
+/* ONE ARTICLE PAGE */
+.one-article-page-img {
+    width: 100%;
+}
+@media screen and (min-width: 768px) {
+    #main-one-article {
+        width: 100%;
+        display: flex;
+    }
+
+    #left-one-article {
+        width: 65%;
+    }
+
+    #right-one-article {
+        width: 30%;
+    }
+}
+
+.padding-top-2 {
+    padding-top: 2rem;
+}
+
+.red-line {
+    border-bottom: 2px solid red;
+    width: 6rem;
+}
+
+#article-content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.article-title {
+    font-weight: 900;
+}
+
+.user-pic-smaller {
+    display: inline-block;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+}
+
+.one-comment {
+    display: flex;
+    gap: 1rem;
+}
+
+/* ONE ARTICLE PAGE END*/
+/* PROFILE PAGE */
+.top-content-userpage {
+    width: 100%;
+}
+.right-block-userpage{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.left-block-userpage{
+    /* background-color: #2b2b2b; */
+}
+
+@media screen and (min-width: 1400px) {
+    .top-content-userpage{
+        display: flex;
+        height: fit-content;
+        
+    }
+    .left-block-userpage {
+        width: 25%;
+    }
+    
+    .right-block-userpage{
+        width:75%;
+        
+        height: fit-content;
+    }
+}
+
+@media screen and (min-width:1043px) {
+    .fav-artists-userpage{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    }
+    
+}
+@media screen and (max-width: 1042px) {
+    .fav-artists-userpage{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+}
+
+/* PROFILE PAGE END */
