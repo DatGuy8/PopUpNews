@@ -1,21 +1,89 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
+from flask_app.models.user import User
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt(app)
 
 @app.route('/')
 def home():
-    # if 'userid' in session:
-    #     return redirect('/dashboard')    # if user logged in send to dashboard
+    if 'userid' in session:
+        return redirect('/dashboard')    # if user logged in send to dashboard
 
-    return redirect('/dashboard')
-
-
-@app.route('/dashboard')
-def homepage():
-    return render_template('dashboard.html')
+    return redirect('/login')
 
 @app.route('/login')
 def login_page():
     return render_template('login_page.html')
+
+#=========REGISTER ROUTE==========
+@app.route('/registeruser', methods=['POST'])
+def register_user():
+    if not User.validate_form(request.form):
+        return redirect('/login')
+
+    pwhash = bcrypt.generate_password_hash(request.form['password'])      # creates hash password from the form
+
+    data = {
+        'username' : request.form['username'],
+        'first_name' : request.form['first_name'],
+        'last_name' : request.form['last_name'],
+        'email' : request.form['email'],
+        'password' : pwhash
+    }
+
+    user = User.add_user(data)
+    print('got user data:', user)
+    return redirect('/dashboard')
+
+
+@app.route('/login',methods=['POST'])
+def login_user():
+
+    data = {
+        'email' : request.form['email']
+    }
+    registered_user = User.get_user_by_email(data)
+
+    if not register_user:
+        flash('Invalid Email/Password', 'login')
+        return redirect('/login')
+
+    if not bcrypt.check_password_hash(registered_user.password, request.form['password']):   # Checks password correct
+        flash('Invalid Email/Password', 'login')
+        return redirect('/login') 
+
+
+    session['userid'] = registered_user.id
+    print('logged in' , register_user)
+    return redirect('/dashboard')
+
+
+
+@app.route('/logout')       #Clears session and send back to login page
+def logout():
+
+    session.clear()
+    return redirect('/')
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route('/dashboard')
+def homepage():
+    if 'userid' in session:
+        return render_template('dashboard.html')    # if user logged in send to dashboard
+
+    return redirect('/login')
+
 
 
 @app.route('/articles')

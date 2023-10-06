@@ -1,87 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
 
-<head>
-    <meta charset="UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POP UP MUSIC NEWS</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>POP UP MUSIC NEWS</title>
+        <!-- CSS only -->
 
-</head>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+    </head>
 
-<body>
-    <h1 class='title'>POP UP MUSIC NEWS</h1>
+    <body>
+        <nav>
+            <div id="top-nav">
+                <h1 id="PopUpNews-Logo"><a href="/login">POP UP NEWS</a></h1>
+            </div>
+        </nav>
 
-<div id="mainbox">
-    <div>
+        <div class="page-width-sizing two-form-div mt2rem">
+            <div>
+                <!-- =========================FLASH MESSAGES================================== -->
+                {% with messages = get_flashed_messages(category_filter
+                =['registration'] ) %} {% if messages %} {% for message in
+                messages %}
+                <p class="codered">{{ message }}</p>
+                {% endfor %} {% endif %} {% endwith %}
 
-<!-- =========================FLASH MESSAGES================================== -->
-            {% with messages = get_flashed_messages(category_filter =['registration'] ) %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <p class="codered">{{ message }}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+                <!-- ==========================FORM CREATING NEW USER=========================== -->
+                <h1 class="text-center">Registration</h1>
+                <form action="/registeruser" method="POST" class="mt1rem">
+                    <!--========/createuser==========-->
+                    <div class="form-div">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" class="rounded" />
+                    </div>
+                    <div class="form-div">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name" class="rounded" />
+                    </div>
+                    <div class="form-div">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name" class="rounded" />
+                    </div>
+                    <div class="form-div">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" class="rounded" />
+                    </div>
+                    <div class="form-div">
+                        <label for="password">Password:</label>
+                        <input
+                            type="password"
+                            name="password"
+                            class="rounded"
+                        />
+                    </div>
+                    <div class="form-div">
+                        <label for="conpassword">Confirm Password:</label>
+                        <input
+                            type="password"
+                            name="conpassword"
+                            class="rounded"
+                        />
+                    </div>
 
+                    <div class="form-div">
+                        <button class="button">Register</button>
+                    </div>
+                </form>
+            </div>
+            <!-- ===============================LOGIN FORM================================== -->
+            <div>
+                {% with messages =
+                get_flashed_messages(category_filter=['login']) %} {% if
+                messages %} {% for message in messages %}
+                <p class="codered">{{ message }}</p>
+                {% endfor %} {% endif %} {% endwith %}
+                <h1 class="text-center">Login</h1>
+                <form action="/login" method="POST" class="mt1rem">
+                    <!--===========/login===========-->
+                    <div class="form-div">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" class="rounded" />
+                    </div>
 
-<!-- ==========================FORM CREATING NEW USER=========================== -->
-            <h1 class="dojotitle">Registration</h1>
-            <form action="/createuser" method="POST" class="cleanerform"><!--========/createuser==========-->
-                <label for="first_name">First Name:</label>
-                <input type="text" name="first_name" class="rounded">
-                <br>
-                <label for="last_name">Last Name:</label>
-                <input type="text" name="last_name" class="rounded">
-                <br>
-                <label for="email">Email:</label>
-                <input type="email" name="email" class="rounded">
-                <br>
-                <label for="password">Password:</label>
-                <input type="password" name="password" class="rounded">
-                <br>
-                <label for="conpassword">Confirm Password:</label>
-                <input type="password" name="conpassword" class="rounded">
-                <br>
-                <button class="rounded bluebutton">Create</button>
-            </form>
-    </div>
-<!-- ===============================LOGIN FORM================================== -->
-    <div>
-            {% with messages = get_flashed_messages(category_filter=['login']) %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <p class="codered">{{ message }}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        <h1 class="dojotitle">Login</h1>
-        <form action="/login" method="POST" class="cleanerform"><!--===========/login===========-->
-            <label for="email">Email:</label>
-            <input type="email" name="email" class="rounded">
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" name="password" class="rounded">
-            <br>
-            <button class="rounded bluebutton">Login</button>
-
-
-        </form>
-
-
-
-    </div>
-</div>
-    
-
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
-</body>
-
+                    <div class="form-div">
+                        <label for="password">Password:</label>
+                        <input
+                            type="password"
+                            name="password"
+                            class="rounded"
+                        />
+                    </div>
+                    <div class="form-div">
+                        <button class="button">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
 </html>
