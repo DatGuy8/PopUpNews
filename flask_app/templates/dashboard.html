@@ -137,16 +137,18 @@
     <div class="mt3rem">
         <div class="page-width-sizing all-articles">
             <h2>Latest Music News Articles</h2>
-            {% for i in range(10)%}
+            {% for article in articles %}
             <article class="article-box">
                 <div class="articles-img-box">
                     <img
-                        src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg" />
+                        src="{{article.image}}" 
+                        alt="article image"
+                    />
                 </div>
                 <div class="articles-info">
-                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
-                    <p>www.pitchfork.com</p>
-                    <p>September 3, 2023</p>
+                    <h1>{{article.title}}</h1>
+                    <p>{{article.source.url}}</p>
+                    <p>{{article.publishedAt}}</p>
                 </div>
             </article>
             {% endfor %}
@@ -155,4 +157,5 @@
     </div>
 </div>
 
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 {% endblock %}

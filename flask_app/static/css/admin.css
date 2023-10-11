@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Headland+One&display=swap");
+
+/* Custom properties */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Headland One", serif;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    background: #E5E7EB;
+    position: relative;
+}
+
+#admin-menu{
+    background-color: #2b2b2b;
+    width: 300px;
+    height: 100%;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    padding: 30px 0 0 30px;
+}
+
+.logo h2{
+    color: #fff;
+}
+
+.admin-items{
+    margin-top: 40px;
+}
+
+.admin-items li{
+    list-style: none;
+    padding: 15px 0;
+}
+
+.admin-items li:hover{
+    background-color: #253047;
+    cursor: pointer;
+}
+
+.admin-items li:nth-child(1){
+    border-left: 4px solid #fff;
+}
+
+
+.admin-items li i{
+    color: rgb(134,141,151);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    margin: 0 10px 0 25px;
+}
+
+.admin-items li:hover i,
+.admin-items li:hover a{
+    color: #f3f4f6;
+}
+
+.admin-items li a{
+    text-decoration: none;
+    color: rgb(134,141,151);
+    font-weight: 300px;
+}

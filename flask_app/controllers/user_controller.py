@@ -1,7 +1,11 @@
 from flask_app import app
-from flask import render_template, redirect, request, session, flash
+from flask import render_template, redirect, request, session, flash,jsonify
 from flask_app.models.user import User
 from flask_bcrypt import Bcrypt
+from datetime import datetime
+import os
+
+import requests
 bcrypt = Bcrypt(app)
 
 @app.route('/')
@@ -16,13 +20,13 @@ def login_page():
     return render_template('login_page.html')
 
 #=========REGISTER ROUTE==========
-@app.route('/registeruser', methods=['POST'])
+@app.route('/register', methods=['POST'])
 def register_user():
+
     if not User.validate_form(request.form):
         return redirect('/login')
 
     pwhash = bcrypt.generate_password_hash(request.form['password'])      # creates hash password from the form
-
     data = {
         'username' : request.form['username'],
         'first_name' : request.form['first_name'],
@@ -44,7 +48,7 @@ def login_user():
     }
     registered_user = User.get_user_by_email(data)
 
-    if not register_user:
+    if not registered_user:
         flash('Invalid Email/Password', 'login')
         return redirect('/login')
 
@@ -54,7 +58,7 @@ def login_user():
 
 
     session['userid'] = registered_user.id
-    print('logged in' , register_user)
+    print('logged in' , registered_user.id)
     return redirect('/dashboard')
 
 
@@ -63,7 +67,7 @@ def login_user():
 def logout():
 
     session.clear()
-    return redirect('/')
+    return render_template('login_page.html')
 
 
 
@@ -79,10 +83,23 @@ def logout():
 
 @app.route('/dashboard')
 def homepage():
-    if 'userid' in session:
-        return render_template('dashboard.html')    # if user logged in send to dashboard
+    if 'userid' not in session:
+        return redirect('/login')
 
-    return redirect('/login')
+    # response = requests.get(f"https://gnews.io/api/v4/top-headlines?category=entertainment&lang=en&country=us&max=10&apikey={os.environ.get('GNEWS_API_KEY')}")
+    
+    # if response.status_code == 200:
+    #     articles = response.json().get('articles')
+
+    #     for article in articles:
+    #         published_at = article.get('publishedAt')
+    #         if published_at:
+    #             article['publishedAt'] = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ").strftime("%Y-%m-%d %H:%M:%S")
+
+    # else:
+    #     articles = []
+    
+    return render_template('dashboard.html') # if user logged in send to dashboard
 
 
 
