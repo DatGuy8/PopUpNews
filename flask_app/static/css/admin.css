@@ -2,18 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Headland+One&display=swap");
 
 /* Custom properties */
-
-* {
-    margin: 0;
-    padding: 0;
-    font-family: "Headland One", serif;
-    box-sizing: border-box;
-}
+/* BASE ADMIN */
 
 body{
     width: 100%;
     background: #E5E7EB;
     position: relative;
+    display: flex;
 }
 
 #admin-menu{
@@ -39,6 +34,7 @@ body{
 .admin-items li{
     list-style: none;
     padding: 15px 0;
+    transition: 0.3s ease;
 }
 
 .admin-items li:hover{
@@ -70,4 +66,61 @@ body{
     text-decoration: none;
     color: rgb(134,141,151);
     font-weight: 300px;
+    transition: 0.3s ease;
+}
+
+/* BASE ADMIN */
+
+/* ADMIN USERS */
+
+.user-pic-50 {
+    display: inline-block;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+#content-admin{
+    width: calc(100% - 300px);
+}
+
+.navigation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background:#fff;
+    padding: 15px 30px;
+    border-bottom: 3px solid black;
+}
+
+.search{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid #d7dbe6;
+    border-radius: 4px;
+}
+
+.search input{
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.search i{
+    margin-right: 14px;
+}
+
+.profile{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profile i{
+    margin-right: 20px;
+    font-size: 19px;
+    font-weight: 400;
 }

@@ -5,12 +5,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{% block title %}{% endblock %}</title>
         <!-- CSS only -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css') }}" />
         <script src="https://kit.fontawesome.com/fbe3633b01.js" crossorigin="anonymous"></script>
 
     </head>
     
 <body>
-    {% block content %}{% endblock %}
+    <header id="admin-menu">
+        <div class="logo">
+            <h2>POP UP NEWS</h2>
+        </div>
+
+        <div class="admin-items">
+            <li><i class="fa-solid fa-chart-column"></i><a href="#">Dashboard</a></li>
+            <li><i class="fa-solid fa-newspaper"></i><a href="#">GNews Api Articles</a></li>
+            <li><i class="fa-solid fa-users"></i><a href="#">Users</a></li>
+            <li><i class="fa-solid fa-user-astronaut"></i><a href="#">Artists</a></li>
+            <li><i class="fa-solid fa-box-archive"></i><a href="#">Databased Articles</a></li>
+
+        </div>
+    </header>
+    <section id="content-admin">
+        <div class="navigation">
+            <div>
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search" />
+                </div>
+            </div>
+            <div class="profile">
+                <i class="fa-solid fa-bell"></i>
+                <img
+                    src="{{ url_for('static', filename='imgs/johntran1.jpg') }}"
+                    class="user-pic-50"
+                />
+            </div>
+        </div>
+        {% block content %}{% endblock %}
+    </section>
 </body>
 </html>

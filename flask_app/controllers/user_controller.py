@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash,jsonify
 from flask_app.models.user import User
+from flask_app.models.article import Article
 from flask_bcrypt import Bcrypt
 from datetime import datetime
 import os
@@ -86,6 +87,8 @@ def homepage():
     if 'userid' not in session:
         return redirect('/login')
 
+
+    articles = Article.get_all_articles()
     # response = requests.get(f"https://gnews.io/api/v4/top-headlines?category=entertainment&lang=en&country=us&max=10&apikey={os.environ.get('GNEWS_API_KEY')}")
     
     # if response.status_code == 200:
@@ -99,7 +102,7 @@ def homepage():
     # else:
     #     articles = []
     
-    return render_template('dashboard.html') # if user logged in send to dashboard
+    return render_template('dashboard.html',articles=articles) # if user logged in send to dashboard
 
 
 
@@ -130,14 +133,3 @@ def one_artist_page(artist_id):
     return render_template('single_artist_page.html')
 
 
-@app.route('/admin/users')
-def admin_users():
-    return render_template('admin_users.html')
-
-@app.route('/admin/articles')
-def admin_articles():
-    return render_template('admin_articles.html')
-
-@app.route('/admin/artists')
-def admin_artists():
-    return render_template('admin_artists.html')

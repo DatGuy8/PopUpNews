@@ -22,4 +22,22 @@ class Article:
 
     @classmethod
     def add_article(cls,data):
-        pass
+        query = '''
+            INSERT INTO articles 
+            (title, description, content, url, image, published_at, source_name, source_url, created_at, updated_at) 
+            VALUES 
+            (%(title)s,%(description)s,%(content)s,%(url)s,%(image)s,%(published_at)s,%(source_name)s,%(source_url)s,NOW(),NOW());
+        '''
+        return connectToMySQL(cls.db).query_db(query,data)
+
+    @classmethod
+    def get_all_articles(cls):
+        query = 'SELECT * FROM articles;'
+        results = connectToMySQL(cls.db).query_db(query)
+
+        articles = []
+
+        for article in results:
+            articles.append( cls(article))
+
+        return articles
