@@ -4,8 +4,7 @@ content %}
     <div class="page-width-sizing">
         <p class="padding-top-2">News</p>
         <h1 class="padding-top-2 article-title">
-            Man Arrested and Charged in Tupac Shakur Murder Case in Surprise
-            Breakthrough
+            {{article.title}}
         </h1>
         <div class="red-line padding-top-2"></div>
     </div>
@@ -13,15 +12,11 @@ content %}
         <div id="main-one-article">
             <div id="left-one-article">
                 <p class="padding-top-2">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Optio perferendis provident, modi veritatis doloribus natus
-                    porro minima laborum exercitationem vel aut explicabo
-                    inventore itaque libero quibusdam voluptas consequuntur
-                    placeat esse!
+                    {{article.description}}
                 </p>
                 <div class="padding-top-2">
-                    <p>www.pitchfork.com</p>
-                    <p>October 3, 2023</p>
+                    <p>{{article.source_url}}</p>
+                    <p>{{article.published_at}}</p>
                 </div>
                 <div class="padding-top-2">
                     123
@@ -29,28 +24,13 @@ content %}
                     145<i class="fa-solid fa-comment"></i>
                 </div>
                 <img
-                    src="https://media.pitchfork.com/photos/65170503aa5a83c358c98525/2:1/w_1920,c_limit/Tupac-Shakur-2Pac.jpg"
+                    src="{{article.image}}"
                     alt="tupac"
                     class="one-article-page-img"
                 />
 
                 <div id="article-content" class="padding-top-2">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Rem molestias porro consequuntur mollitia natus repudiandae
-                    odit nam dolore! Iure omnis minima excepturi ea veniam,
-                    rerum aspernatur voluptatum enim laborum tempore! Lorem
-                    ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-                    amet mollitia iusto dolores harum tenetur eligendi tempora
-                    maiores dolorum dolor voluptate excepturi vero, cum odio,
-                    debitis veritatis eum cumque. Iste! Lorem, ipsum dolor sit
-                    amet consectetur adipisicing elit. Eius, et. Voluptates nam
-                    voluptas amet assumenda atque id vero libero ea, similique,
-                    ipsum nostrum natus qui eligendi maxime facere labore sunt.
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Aliquid iure ratione, dolorum dolorem asperiores unde nobis
-                    corrupti praesentium accusantium alias temporibus laudantium
-                    dolor officia, voluptatem est. Voluptates officia
-                    consequuntur voluptatibus?
+                    {{article.content}}
                 </div>
                 <div class="padding-top-2">
                     <h3>Comments</h3>
@@ -96,7 +76,7 @@ content %}
                     </div>
                 </div>
             </div>
-            <div id="right-one-article">ad space</div>
+            <div id="right-one-article"></div>
         </div>
     </div>
 </div>

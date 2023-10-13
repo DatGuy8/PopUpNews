@@ -21,12 +21,9 @@ def admin_articles():
             published_at = article.get('publishedAt')
             if published_at:
                 article['publishedAt'] = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ").strftime("%Y-%m-%d %H:%M:%S")
-
     else:
         articles = []
 
-
-    print(articles)
     return render_template('admin_articles.html', articles=articles)
 
 @app.route('/admin/artists')

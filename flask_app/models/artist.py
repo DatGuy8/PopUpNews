@@ -13,4 +13,20 @@ class Artist:
     
     @classmethod
     def add_artist(cls,data):
-        pass
+        query = '''
+            INSERT INTO artists
+            (name, picture, bio, created_at, updated_at) 
+            VALUES 
+            (%(name)s,%(picture)s,%(bio)s,NOW(),NOW());
+        '''
+        return connectToMySQL(cls.db).query_db(query,data)
+
+
+    @classmethod
+    def get_one_artist(cls,artist_id):
+        query = '''
+            SELECT * FROM artists WHERE id = %(id)s;
+        '''
+        data = {'id': artist_id}
+        result = connectToMySQL(cls.db).query_db(query,data)
+        return cls(result[0])

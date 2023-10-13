@@ -75,13 +75,6 @@ def logout():
 
 
 
-
-
-
-
-
-
-
 @app.route('/dashboard')
 def homepage():
     if 'userid' not in session:
@@ -110,9 +103,7 @@ def homepage():
 def all_articles():
     return render_template('articles_page.html')
 
-@app.route('/articles/<int:article_id>')
-def one_article_page(article_id):
-    return render_template('one_article_page.html')
+
 
 
 @app.route('/user/feed')
@@ -123,13 +114,5 @@ def user_feed():
 def profile_page(user_id):
     return render_template('profile_page.html')
 
-@app.route('/artists')
-def all_artists_page():
-    return render_template('all_artists_page.html')
-
-
-@app.route('/artists/<int:artist_id>')
-def one_artist_page(artist_id):
-    return render_template('single_artist_page.html')
 
 

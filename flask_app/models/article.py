@@ -30,14 +30,20 @@ class Article:
         '''
         return connectToMySQL(cls.db).query_db(query,data)
 
+
     @classmethod
     def get_all_articles(cls):
         query = 'SELECT * FROM articles;'
         results = connectToMySQL(cls.db).query_db(query)
-
         articles = []
-
         for article in results:
-            articles.append( cls(article))
-
+            articles.append(cls(article))
         return articles
+
+
+    @classmethod
+    def get_one_article(cls,article_id):
+        query = "SELECT * from articles WHERE id = %(id)s;"
+        data = {'id': article_id}
+        result = connectToMySQL(cls.db).query_db(query,data)
+        return cls(result[0])

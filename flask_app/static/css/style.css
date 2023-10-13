@@ -124,6 +124,13 @@
 
 
 /* ===========================DASHBOARD.HTML=========================== */
+.links{
+    color: black;
+    text-decoration: none;
+}
+.links:hover{
+    text-decoration: underline;
+}
 
 .mt3rem {
     margin-top: 3rem;
@@ -551,6 +558,9 @@
 #article-content {
     width: 90%;
     margin: 0 auto;
+}
+#article-content p{
+    margin-top: 1rem;
 }
 
 .article-title {
