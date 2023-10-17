@@ -1,0 +1,42 @@
+{% extends 'base_admin.html' %} {% block title %}Admin Pop Up Articles{%
+endblock %} {% block content %}
+
+<div>
+    <div class="navigation">
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search For Database Articles" />
+        </div>
+    </div>
+    <div class="page-width-sizing all-articles mt3rem">
+        <h2>Articles in Database</h2>
+        {% for article in articles %}
+        <div
+            class="article-box"
+        >
+            <div class="articles-img-box">
+                <img src="{{article.image}}" alt="article image" />
+            </div>
+            <div class="articles-info">
+                <h1>{{article.title}}</h1>
+                <p>{{article.source_url}}</p>
+                <p>{{article.published_at}}</p>
+            </div>
+            <form  method="post"
+            action="/admin/articles/feature/{{article.id}}">
+            <input type="hidden" name="featured" value="{{article.featured}}" />
+            {% if article.featured %}
+            <button>Unfeature</button>
+            {% else %}
+            <button>Feature</button>
+            {% endif %}
+        </form>
+        <form method="post" action="/admin/articles/delete/{{article.id}}">
+            <button>Delete Article</button>
+        </form>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+{% endblock%}

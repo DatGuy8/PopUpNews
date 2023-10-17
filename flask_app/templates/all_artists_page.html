@@ -5,13 +5,13 @@ content %}
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
-        {% for i in range(8) %}
+        {% for artist in artists %}
         <div class="swiper-slide">
             <div class="artist-img-container">
                 <img
-                    src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                    src="{{artist.picture}}"
                 />
-                <p>Posty</p>
+                <p>{{artist.name}}</p>
             </div>
         </div>
         {%endfor%}
@@ -37,13 +37,13 @@ content %}
         <div class="all-artists-div">
             <form class="one-artist" method="post" action="/artist/add">
                 <img
-                    src="{{artist.strArtistThumb}}"
+                    src="{{searchedArtist.strArtistThumb}}"
                 />
-                <div class="text-center"><p>{{artist.strArtist}}</p></div>
+                <div class="text-center"><p>{{searchedArtist.strArtist}}</p></div>
 
-                <input type="hidden" name="picture" value="{{artist.strArtistThumb}}">
-                <input type="hidden" name="bio" value="{{artist.strBiographyEN}}">
-                <input type="hidden" name="name" value="{{artist.strArtist}}">
+                <input type="hidden" name="picture" value="{{searchedArtist.strArtistThumb}}">
+                <input type="hidden" name="bio" value="{{searchedArtist.strBiographyEN}}">
+                <input type="hidden" name="name" value="{{searchedArtist.strArtist}}">
                 <button>Add</button>
             </form>
         </div>

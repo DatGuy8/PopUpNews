@@ -35,8 +35,9 @@ def search_artist():
 
 @app.route('/artists')
 def all_artists_page():
-    artist = {}
-    return render_template('all_artists_page.html', artist=artist)
+    artists = Artist.get_all_artists()
+    searchedArtist = {}
+    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists)
 
 
 @app.route('/artist/add', methods=['POST'])

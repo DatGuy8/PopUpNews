@@ -30,3 +30,14 @@ class Artist:
         data = {'id': artist_id}
         result = connectToMySQL(cls.db).query_db(query,data)
         return cls(result[0])
+
+    @classmethod
+    def get_all_artists(cls):
+        query = '''
+            SELECT * FROM artists;
+        '''
+        results = connectToMySQL(cls.db).query_db(query)
+        artists = []
+        for artist in results:
+            artists.append(cls(artist))
+        return artists

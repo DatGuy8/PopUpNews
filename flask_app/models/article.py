@@ -40,6 +40,18 @@ class Article:
             articles.append(cls(article))
         return articles
 
+    @classmethod
+    def get_featured_articles(cls):
+        query = '''
+            SELECT * FROM articles WHERE featured = 1 ORDER BY updated_at DESC;
+        '''
+
+        results = connectToMySQL(cls.db).query_db(query)
+        featured = []
+        for article in results:
+            featured.append(cls(article))
+        return featured
+
 
     @classmethod
     def get_one_article(cls,article_id):
@@ -47,3 +59,22 @@ class Article:
         data = {'id': article_id}
         result = connectToMySQL(cls.db).query_db(query,data)
         return cls(result[0])
+
+    @classmethod
+    def change_featured(cls,article_id, featured):
+        query = '''
+            UPDATE articles SET featured = %(featured)s, updated_at = NOW() WHERE id = %(id)s;
+        '''
+        data = {'id' : article_id, 'featured': '0' if featured else '1' }
+        
+        
+        return connectToMySQL(cls.db).query_db(query,data)
+    
+
+    @classmethod
+    def delete(cls,article_id):
+        query = '''
+            DELETE FROM articles where id = %(id)s;
+        '''
+        data = {'id': article_id}
+        return connectToMySQL(cls.db).query_db(query,data)
