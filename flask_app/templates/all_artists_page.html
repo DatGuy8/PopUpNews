@@ -33,7 +33,7 @@ content %}
                 Search
             </button>
         </form>
-        <h2 class="text-center">Results for Posty</h2>
+        <h2 class="text-center">Results for {{artist_name}}</h2>
         <div class="all-artists-div">
             <form class="one-artist" method="post" action="/artist/add">
                 <img
@@ -53,13 +53,13 @@ content %}
 <div class="page-width-sizing mt2rem">
     <h2 class="text-center">All Artists</h2>
     <div class="all-artists-div">
-        {%for i in range(10)%}
+        {%for artist in artists %}
 
         <div class="one-artist">
             <img
-                src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                src="{{artist.picture}}"
             />
-            <div class="text-center"><p>Post Malone</p></div>
+            <div class="text-center"><p>{{artist.name}}</p></div>
         </div>
         {%endfor%}
     </div>

@@ -23,15 +23,18 @@ def search_artist():
 
     response = requests.get(url, headers=headers, params=querystring)
 
-    print(response.json())
 
     if response.status_code == 200:
         returnArtist = response.json().get('artists')
-
-        artist = returnArtist[0]
+        if returnArtist is not None and len(returnArtist) > 0:
+            searchedArtist = returnArtist[0]  # Assuming you want the first artist if there are multiple results
+        else:
+            searchedArtist = {}
     else:
         artist = {}
-    return render_template('all_artists_page.html', artist=artist)
+
+    artists = Artist.get_all_artists()
+    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists,artist_name=artist_name)
 
 @app.route('/artists')
 def all_artists_page():

@@ -31,6 +31,15 @@ class User:
             return False
         return cls(result[0])
 
+    @classmethod
+    def get_all_users(cls):
+        query = 'SELECT * FROM users;'
+        results = connectToMySQL(cls.db).query_db(query)
+        users = []
+        for user in results:
+            users.append(cls(user))
+        return users
+
 
     @staticmethod
     def validate_form(data):

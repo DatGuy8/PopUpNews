@@ -2,6 +2,7 @@ from flask_app import app
 from flask import render_template, redirect, request, session, flash, jsonify
 from flask_app.models.article import Article
 from flask_app.models.artist import Artist
+from flask_app.models.article_like import ArticleLike
 
 
 
@@ -37,7 +38,21 @@ def all_articles():
 
 @app.route('/articles/<int:article_id>')
 def one_article_page(article_id):
+    if 'userid' not in session:
+        return redirect('/login')
 
     article = Article.get_one_article(article_id)
 
     return render_template('one_article_page.html', article=article)
+
+@app.route('/articles/like/<int:article_id>',methods=['POST'])
+def like_article(article_id):
+    if 'userid' not in session:
+        return redirect('/login')
+    
+    print(session['userid'])
+    user_id = session['userid']
+
+    ArticleLike.add(user_id, article_id)
+
+    return redirect('/articles/' + str(article_id))
