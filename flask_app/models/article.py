@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
+from flask_app.models import article_like
 
 
 class Article:
@@ -16,8 +17,8 @@ class Article:
         self.source_url = data['source_url']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.likes_count = data['likes_count']
         self.featured = data['featured']
+        self.likes = 0
 
 
     @classmethod
@@ -33,11 +34,18 @@ class Article:
 
     @classmethod
     def get_all_articles(cls):
-        query = 'SELECT * FROM articles;'
+        query = '''
+            SELECT articles.*, COUNT(article_likes.user_id) as likes_count
+            FROM articles 
+            LEFT JOIN article_likes ON article_likes.article_id = articles.id 
+            GROUP BY articles.id;
+        '''
         results = connectToMySQL(cls.db).query_db(query)
         articles = []
         for article in results:
-            articles.append(cls(article))
+            one_article = cls(article)
+            one_article.likes = article['likes_count']
+            articles.append(one_article)
         return articles
 
     @classmethod
@@ -55,10 +63,19 @@ class Article:
 
     @classmethod
     def get_one_article(cls,article_id):
-        query = "SELECT * from articles WHERE id = %(id)s;"
+        query = """
+            SELECT articles.*, COUNT(article_likes.user_id) as likes_count
+            FROM articles 
+            LEFT JOIN article_likes ON article_likes.article_id = articles.id 
+            WHERE articles.id = %(id)s;
+        """
         data = {'id': article_id}
-        result = connectToMySQL(cls.db).query_db(query,data)
-        return cls(result[0])
+        results = connectToMySQL(cls.db).query_db(query,data)
+
+        one_article = results[0]
+        article = cls(one_article)
+        article.likes = one_article['likes_count']
+        return article
 
     @classmethod
     def change_featured(cls,article_id, featured):

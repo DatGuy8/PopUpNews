@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, redirect, request, session, flash,jsonify
+from flask import render_template, redirect, request, session, flash, jsonify
 from flask_app.models.artist import Artist
 from datetime import datetime
 import os
@@ -22,25 +22,25 @@ def search_artist():
     }
 
     response = requests.get(url, headers=headers, params=querystring)
-
+    
+    searchArtist = {}
 
     if response.status_code == 200:
         returnArtist = response.json().get('artists')
         if returnArtist is not None and len(returnArtist) > 0:
-            searchedArtist = returnArtist[0]  # Assuming you want the first artist if there are multiple results
+            searchedArtist = returnArtist[0]
         else:
             searchedArtist = {}
-    else:
-        artist = {}
 
     artists = Artist.get_all_artists()
-    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists,artist_name=artist_name)
+    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists, artist_name=artist_name,searchPage=True)
+
 
 @app.route('/artists')
 def all_artists_page():
     artists = Artist.get_all_artists()
     searchedArtist = {}
-    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists)
+    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists,searchPage=False)
 
 
 @app.route('/artist/add', methods=['POST'])
@@ -54,16 +54,18 @@ def add_artist_to_db():
 def one_artist_page(artist_id):
     artist = Artist.get_one_artist(artist_id)
 
-    response = requests.get(f"https://gnews.io/api/v4/top-headlines?category=entertainment&lang=en&&q={artist.name}&country=us&max=20&apikey={os.environ.get('GNEWS_API_KEY')}&expand=content")
+    response = requests.get(
+        f"https://gnews.io/api/v4/top-headlines?category=entertainment&lang=en&&q={artist.name}&country=us&max=20&apikey={os.environ.get('GNEWS_API_KEY')}&expand=content")
     if response.status_code == 200:
         articles = response.json().get('articles')
 
         for article in articles:
             published_at = article.get('publishedAt')
             if published_at:
-                article['publishedAt'] = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ").strftime("%Y-%m-%d %H:%M:%S")
+                article['publishedAt'] = datetime.strptime(
+                    published_at, "%Y-%m-%dT%H:%M:%SZ").strftime("%Y-%m-%d %H:%M:%S")
     else:
         articles = []
     print(response)
-    
+
     return render_template('single_artist_page.html', artist=artist, articles=articles)

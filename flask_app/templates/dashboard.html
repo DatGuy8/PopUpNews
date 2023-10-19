@@ -48,17 +48,17 @@ content %}
         <div class="grid-row-end-2">
             <h3>Top Articles</h3>
             <hr />
-            {% for i in range(5) %}
+            {% for article in articles[:4] %}
             <article class="top-articles">
                 <div>
-                    <h1>Article title</h1>
-                    <p>website</p>
+                    <p>{{article.title}}</p>
+                    <p>{{article.source_name}}</p>
                     <div>
-                        123
+                        {{article.likes}}
                         <i class="fa-solid fa-thumbs-up"></i>
                         145<i class="fa-solid fa-comment"></i>
                     </div>
-                    <hr />
+                    <hr>
                 </div>
             </article>
             {% endfor %}
@@ -112,6 +112,11 @@ content %}
 
                     <p>{{article.source_name}}</p>
                     <p>{{article.description}}</p>
+                    <div>
+                        {{article.likes}}
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        145<i class="fa-solid fa-comment"></i>
+                    </div>
                 </div>
             </article>
             {% endfor %}

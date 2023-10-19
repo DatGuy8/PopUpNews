@@ -19,7 +19,7 @@ content %}
                     <p>{{article.published_at}}</p>
                 </div>
                 <div class="padding-top-2">
-                    123
+                    {{article.likes}}
                     <form action="/articles/like/{{article.id}}" method="POST">
 
                         <button><i class="fa-solid fa-thumbs-up"></i></button>
