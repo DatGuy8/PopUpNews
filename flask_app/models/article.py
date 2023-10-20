@@ -51,13 +51,20 @@ class Article:
     @classmethod
     def get_featured_articles(cls):
         query = '''
-            SELECT * FROM articles WHERE featured = 1 ORDER BY updated_at DESC;
+            SELECT articles.*, COUNT(article_likes.user_id) as likes_count
+            FROM articles
+            LEFT JOIN article_likes ON article_likes.article_id = articles.id
+            WHERE articles.featured = 1
+            GROUP BY articles.id
+            ORDER BY articles.updated_at DESC;
         '''
 
         results = connectToMySQL(cls.db).query_db(query)
         featured = []
         for article in results:
-            featured.append(cls(article))
+            one_article = cls(article)
+            one_article.likes = article['likes_count']
+            featured.append(one_article)
         return featured
 
 
