@@ -2,6 +2,7 @@ from flask_app import app
 from flask import render_template, redirect, request, session, flash, jsonify
 from flask_app.models.artist import Artist
 from datetime import datetime
+from flask_app.models.favorite_artist import FavoriteArtist
 import os
 
 import requests
@@ -69,3 +70,16 @@ def one_artist_page(artist_id):
     print(response)
 
     return render_template('single_artist_page.html', artist=artist, articles=articles)
+
+
+@app.route('/artists/favorite/<int:artist_id>',methods=['POST'])
+def add_favourite_artist(artist_id):
+    if 'userid' not in session:
+        return redirect('/login')
+    
+    user_id = session['userid']
+
+    FavoriteArtist.add(user_id,artist_id)
+
+    print('added artists to favorites')
+    return redirect('/artists/' + str(artist_id))

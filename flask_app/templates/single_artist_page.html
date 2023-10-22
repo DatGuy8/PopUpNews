@@ -12,10 +12,12 @@
         <div class="half-content">
             <h1>{{artist.name}}</h1>
             <p>
-                Hip Hop/Rap
+                <form action="/artists/favorite/{{artist.id}}" method="POST">
+                    <button>Favorite</button>
+
+                </form>
             </p>
             <p>{{artist.bio}}</p>
-            <p><button>Favorite</button></p>
         </div>
 
     </div>

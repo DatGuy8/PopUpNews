@@ -33,7 +33,9 @@ def homepage():
 
 @app.route('/articles')
 def all_articles():
-    return render_template('articles_page.html')
+    articles = Article.get_all_articles()
+    featured = Article.get_featured_articles()
+    return render_template('articles_page.html',featured=featured,articles=articles)
 
 
 @app.route('/articles/<int:article_id>')

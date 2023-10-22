@@ -256,11 +256,13 @@
     display: flex;
     align-items: center;
 }
-
+.text-white{
+    color:white;
+}
 .half-content {
     height: 100%;
     color: white;
-    object-fit: cover;
+    
 }
 
 @media screen and (min-width: 768px) {
@@ -271,7 +273,7 @@
     .half-content {
         width: 50%;
         height: 25rem;
-        object-fit: contain;
+        
         display: flex;
         align-items: center;
     }
@@ -282,6 +284,9 @@
         gap: 1rem;
         padding: 3rem;
         flex-wrap: auto;
+        height: 25rem;
+        overflow: scroll;
+        overflow-x: hidden;
     }
 }
 
@@ -295,7 +300,7 @@
 
 .half-content img {
     width: 100%;
-    height: 80%;
+    height: 24rem;
     object-fit: contain;
 }
 
