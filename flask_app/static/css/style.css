@@ -164,6 +164,13 @@
 .grid-span-6 {
     grid-column: span 6;
 }
+.border-bottom{
+    border-bottom: 1px solid #b3b3b3;
+}
+.border-right{
+    border-right:  1px solid #b3b3b3;
+    padding-right: 10px;
+}
 
 .user-widget {
     display: flex;
@@ -191,6 +198,13 @@
     grid-column-end: 13;
     grid-row-start: 1;
     grid-row-end: 3;
+}
+
+.grid-row-3-first{
+    grid-column-start:1;
+    grid-column-end:4;
+    grid-row-start: 1;
+    grid-row-end:3;
 }
 
 .top-articles {
@@ -353,18 +367,18 @@
     width: 100%;
 }
 
-.search-artist-form {
+.styled_search_form {
     margin-top: 1rem;
     margin-inline: auto;
     width: 300px;
 }
 
-.search-artist-form input {
+.styled_search_form input {
     padding: 10px;
     border-radius: 0.5rem;
 }
 
-.search-artist-form button {
+.styled_search_form button {
     padding: 10px;
     border-radius: 0.5rem;
     background-color: #2b2b2b;

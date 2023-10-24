@@ -24,7 +24,6 @@ def search_artist():
 
     response = requests.get(url, headers=headers, params=querystring)
     
-    searchArtist = {}
 
     if response.status_code == 200:
         returnArtist = response.json().get('artists')

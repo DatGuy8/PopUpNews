@@ -3,7 +3,7 @@ content %}
 <div class="main-content">
     <!-- Top Div -->
     <div class="grid-container-12 page-width-sizing">
-        <div class="grid-span-3">
+        <div class="grid-row-3-first border-right">
             <div class="user-widget">
                 <img src="{{ url_for('static', filename='imgs/johntran1.jpg') }}" class="user-pic" />
                 <p>DatGuy</p>
@@ -11,8 +11,8 @@ content %}
                 <p># of Favorite Articles</p>
             </div>
         </div>
-        <div class="grid-span-6">
-            <article>
+        <div class="grid-span-6 border-right">
+            <article class="border-bottom">
                 <a href="/articles/{{featured[0].id}}" >
                     <img src="{{featured[0].image}}" width="100%" />
                 </a>
@@ -31,7 +31,7 @@ content %}
             </article>
         </div>
         <div class="grid-start-4">
-            <article class="grid-container-6">
+            <article class="grid-container-6  border-right">
                 <div class="grid-span-3">
                     <h2>
                         <a href="/articles/{{featured[1].id}}" class="links">{{featured[1].title}}</a>

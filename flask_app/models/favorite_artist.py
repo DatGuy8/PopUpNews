@@ -17,6 +17,5 @@ class FavoriteArtist:
             VALUES ( %(user_id)s, %(artist_id)s, NOW(),NOW());
         ''' 
         data = {'user_id':user_id, 'artist_id': artist_id}
-
         return connectToMySQL(cls.db).query_db(query,data)
     

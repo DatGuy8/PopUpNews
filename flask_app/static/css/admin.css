@@ -103,15 +103,18 @@ body{
     border-radius: 4px;
 }
 
+
 .search input{
     border: none;
     outline: none;
     font-size: 14px;
 }
 
+
 .search i{
     margin-right: 14px;
 }
+
 
 .profile{
     display: flex;
