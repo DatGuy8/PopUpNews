@@ -13,7 +13,7 @@ def admin_users():
 @app.route('/admin/articles')
 def admin_articles():
 
-    response = requests.get(f"https://gnews.io/api/v4/search?q=drake&lang=en&country=us&max=50&apikey={os.environ.get('GNEWS_API_KEY')}&expand=content")
+    response = requests.get(f"https://gnews.io/api/v4/search?q=music&lang=en&country=us&max=50&apikey={os.environ.get('GNEWS_API_KEY')}&expand=content")
     
     if response.status_code == 200:
         articles = response.json().get('articles')

@@ -13,6 +13,7 @@ content %}
         </div>
         <div class="grid-span-6 border-right">
             <article class="border-bottom">
+                {% if featured %}
                 <a href="/articles/{{featured[0].id}}" >
                     <img src="{{featured[0].image}}" width="100%" />
                 </a>
@@ -28,11 +29,13 @@ content %}
                     <i class="fa-solid fa-thumbs-up"></i>
                     145<i class="fa-solid fa-comment"></i>
                 </div>
+                {% endif %}
             </article>
         </div>
         <div class="grid-start-4">
             <article class="grid-container-6  border-right">
                 <div class="grid-span-3">
+                    {% if featured %}
                     <h2>
                         <a href="/articles/{{featured[1].id}}" class="links">{{featured[1].title}}</a>
                     </h2>
@@ -50,6 +53,7 @@ content %}
                         <img src="{{featured[1].image}}" width="100%" />
                     </a>
                 </div>
+                {%endif%}
             </article>
         </div>
         <div class="grid-row-end-2">
