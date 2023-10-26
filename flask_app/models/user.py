@@ -1,5 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
+from flask_app.models import artist
+from flask_app.models import article
 import re
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -16,6 +18,8 @@ class User:
         self.admin = data['admin']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.favorite_artists = []
+        self.favorite_articles = []
 
     @classmethod
     def add_user(cls,data):
@@ -30,6 +34,38 @@ class User:
         if len(result) < 1:
             return False
         return cls(result[0])
+
+    @classmethod
+    def get_user_by_id(cls,user_id):
+        query = '''
+            SELECT * FROM users 
+            LEFT JOIN favorite_artists 
+            ON users.id = favorite_artists.user_id 
+            LEFT JOIN artists 
+            ON favorite_artists.artist_id = artists.id 
+            where users.id = %(id)s;
+        '''
+        data = {'id': user_id}
+        results = connectToMySQL(cls.db).query_db(query, data)
+
+        user = cls(results[0])
+        
+
+        for row in results:
+            artist_data = {
+                'id': row['artists.id'],
+                'name': row['name'],
+                'picture': row['picture'],
+                'bio': row['bio'],
+                'created_at': row['artists.created_at'],
+                'updated_at': row['artists.updated_at']
+            }
+            user.favorite_artists.append(artist.Artist(artist_data))
+        if(user.favorite_artists[0].id == None):
+            user.favorite_artists = []
+        
+        return user
+
 
     @classmethod
     def get_all_users(cls):

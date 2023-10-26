@@ -8,7 +8,7 @@ content %}
                 src="{{ url_for('static', filename='imgs/johntran1.jpg') }}"
                 class="user-pic mt2rem"
             />
-            <p>DatGuy</p>
+            <p>{{user.first_name}} {{user.last_name}}</p>
             <p># of Favorite Artists</p>
             <p># of Favorite Articles</p>
             <div class="">
@@ -18,17 +18,20 @@ content %}
         </div>
     </div>
     <div class="right-block-userpage">
-        <h2 class="text-center">John's Favorite Artists</h2>
+        <h2 class="text-center">{{user.username}}'s Favorite Artists</h2>
         <div class="fav-artists-userpage">
-            {%for i in range(10)%}
-
+            {% if user.favorite_artists %}
+                {%for artist in user.favorite_artists %}
             <div class="one-artist">
                 <img
-                    src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
+                    src="{{artist.picture}}"
                 />
-                <div class="text-center"><p>Post Malone</p></div>
+                <div class="text-center"><p>{{artist.name}}</p></div>
             </div>
-            {%endfor%}
+                {%endfor%}
+            {%else%}
+            <div>No favorite artists yet</div>
+            {%endif%}
         </div>
         <div class="pagination">
             <a href="#">&laquo;</a>

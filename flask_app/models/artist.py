@@ -41,3 +41,5 @@ class Artist:
         for artist in results:
             artists.append(cls(artist))
         return artists
+    
+

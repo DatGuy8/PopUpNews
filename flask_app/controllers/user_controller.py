@@ -83,7 +83,13 @@ def user_feed():
 
 @app.route('/users/<int:user_id>')
 def profile_page(user_id):
-    return render_template('profile_page.html')
+    if 'userid' not in session:
+        return redirect('/login')
+
+
+    user = User.get_user_by_id(user_id)
+    
+    return render_template('profile_page.html', user=user)
 
 
 

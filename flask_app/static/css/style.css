@@ -540,6 +540,22 @@
     width: 100%;
 }
 
+.like-comment-div{
+    display: flex;
+    gap: 1rem;
+}
+
+.like-btn{
+    padding:.5rem;
+    background-color: black;
+    color: white;
+}
+
+.like-btn:hover{
+    background-color: #2b2b2b;
+    cursor: pointer;
+}
+
 .comment-form{
     width: 100%;
 }
