@@ -5,13 +5,11 @@ content %}
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
-        {% for i in range(8) %}
+        {% for artist in artists %}
         <div class="swiper-slide">
             <div class="artist-img-container">
-                <img
-                    src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
-                />
-                <p>Posty</p>
+                <img src="{{artist.picture}}" />
+                <p>{{artist.name}}</p>
             </div>
         </div>
         {%endfor%}
@@ -25,35 +23,42 @@ content %}
 <h3 class="text-center">Dont See Your Favorite Artists?</h3>
 <div class="page-width-sizing">
     <div class="search-div">
-        <div class="search-artist-form">
-            <input type="text" placeholder="Look up an artist to add" /><button
-                type="submit"
-            >
-                Search
-            </button>
-        </div>
-        <h2 class="text-center">Results for Posty</h2>
+        <form class="styled_search_form" method="get" action="/artist/search">
+            <input type="text" placeholder="Look up an artist to add" name="artist_name" />
+            <button type="submit">Search</button>
+        </form>
+        {% if searchPage %}
+        <h2 class="text-center">Results for {{artist_name}}</h2>
+        {% if searchedArtist %}
         <div class="all-artists-div">
-            <div class="one-artist">
-                <img
-                    src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
-                />
-                <div class="text-center"><p>Post Malone</p></div>
-            </div>
+            <form class="one-artist" method="post" action="/artist/add">
+                <img src="{{searchedArtist.strArtistThumb}}" />
+                <div class="text-center">
+                    <p>{{searchedArtist.strArtist}}</p>
+                </div>
+
+                <input type="hidden" name="picture" value="{{searchedArtist.strArtistThumb}}" />
+                <input type="hidden" name="bio" value="{{searchedArtist.strBiographyEN}}" />
+                <input type="hidden" name="name" value="{{searchedArtist.strArtist}}" />
+                <button>Add</button>
+            </form>
         </div>
+        {% else %}
+        <div class="text-center">No results found</div>
+        {% endif %} {% endif %}
     </div>
 </div>
 
 <div class="page-width-sizing mt2rem">
     <h2 class="text-center">All Artists</h2>
     <div class="all-artists-div">
-        {%for i in range(10)%}
+        {%for artist in artists %}
 
         <div class="one-artist">
-            <img
-                src="https://www.theaudiodb.com/images/media/artist/thumb/rocuvh1680227272.jpg"
-            />
-            <div class="text-center"><p>Post Malone</p></div>
+            <img src="{{artist.picture}}" />
+            <div class="text-center">
+                <p>{{artist.name}}</p>
+            </div>
         </div>
         {%endfor%}
     </div>

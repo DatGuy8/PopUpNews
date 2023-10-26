@@ -1,29 +1,24 @@
 {% extends 'base.html' %} {% block title %}Pop Up Articles{% endblock %} {%
 block content %}
+
 <div class="dark-main-container">
     <article class="page-width-sizing dark-main-content">
         <div class="half-content">
             <a href="/articles/1">
-                <img
-                    src="https://media.pitchfork.com/photos/64fb462d6351e19deab85296/2:1/w_1920,c_limit/Live-Nation-Entertainment.jpg"
-                    alt="featured article pic"
-                />
+                <img src="{{featured[0].image}}"
+                    alt="featured article pic" />
             </a>
         </div>
         <div class="half-content">
-            <a href="/articles/1">
+            <a href="/articles/1" class="links text-white">
                 <h1>
-                    Live Nation Entertainment Faces Wage Theft Lawsuit in
-                    California
+                    {{featured[0].title}}
                 </h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Quas asperiores cupiditate in id officia placeat cum soluta
-                    aspernatur saepe tenetur illum, alias magni repudiandae
-                    totam odit dolore esse animi corporis!
-                </p>
-                <p>www.billboard.com</p>
             </a>
+            <p>
+                {{featured[0].description}}
+            </p>
+            <p>{{featured[0].source_url}}</p>
         </div>
     </article>
 </div>
@@ -31,18 +26,16 @@ block content %}
 <!-- Featured Articles -->
 <h2 class="text-center mt2rem">Featured Articles</h2>
 <div class="page-width-sizing small-4-featured mt2rem">
-    {% for i in range(4) %}
+    {% for article in featured[1:5] %}
     <article>
         <div>
-            <img
-                src="https://media.pitchfork.com/photos/64fb3d4ff102d9dbdeb02d1f/2:1/w_1920,c_limit/Lil%20Baby.jpg"
-            />
+            <img src="{{article.image}}" />
         </div>
         <div class="small-featured-article-info">
             <h1 class="text-center text-smaller-on-med">
-                Lil Baby cuts concert short in Memphis after shooting
+                {{article.title}}
             </h1>
-            <p class="text-center">www.pitchfork.com</p>
+            <p class="text-center">{{article.source_url}}</p>
         </div>
     </article>
     {%endfor%}
@@ -66,17 +59,16 @@ block content %}
                 <option>Metal</option>
             </select>
         </div>
-        {% for i in range(10)%}
+        {% for article in articles %}
         <article class="article-box">
             <div class="articles-img-box">
                 <img
-                    src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"
-                />
+                    src="{{article.image}}" />
             </div>
             <div class="articles-info">
-                <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
-                <p>www.pitchfork.com</p>
-                <p>September 3, 2023</p>
+                <h1>{{article.title}}</h1>
+                <p>{{article.source_name}}</p>
+                <p>{{article.published_at}}</p>
             </div>
         </article>
         {%endfor%}

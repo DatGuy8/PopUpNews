@@ -1,30 +1,80 @@
 from flask_app import app
-from flask import render_template, redirect, request, session, flash
+from flask import render_template, redirect, request, session, flash,jsonify
+from flask_app.models.user import User
+from flask_app.models.article import Article
+from flask_bcrypt import Bcrypt
+from datetime import datetime
+import os
+
+import requests
+bcrypt = Bcrypt(app)
 
 @app.route('/')
 def home():
-    # if 'userid' in session:
-    #     return redirect('/dashboard')    # if user logged in send to dashboard
+    if 'userid' in session:
+        return redirect('/dashboard')    # if user logged in send to dashboard
 
-    return redirect('/dashboard')
-
-
-@app.route('/dashboard')
-def homepage():
-    return render_template('dashboard.html')
+    return redirect('/login')
 
 @app.route('/login')
 def login_page():
     return render_template('login_page.html')
 
+#=========REGISTER ROUTE==========
+@app.route('/register', methods=['POST'])
+def register_user():
 
-@app.route('/articles')
-def all_articles():
-    return render_template('articles_page.html')
+    if not User.validate_form(request.form):
+        return redirect('/login')
 
-@app.route('/articles/<int:article_id>')
-def one_article_page(article_id):
-    return render_template('one_article_page.html')
+    pwhash = bcrypt.generate_password_hash(request.form['password'])      # creates hash password from the form
+    data = {
+        'username' : request.form['username'],
+        'first_name' : request.form['first_name'],
+        'last_name' : request.form['last_name'],
+        'email' : request.form['email'],
+        'password' : pwhash
+    }
+
+    user = User.add_user(data)
+    print('got user data:', user)
+    return redirect('/dashboard')
+
+
+@app.route('/login',methods=['POST'])
+def login_user():
+
+    data = {
+        'email' : request.form['email']
+    }
+    registered_user = User.get_user_by_email(data)
+
+    if not registered_user:
+        flash('Invalid Email/Password', 'login')
+        return redirect('/login')
+
+    if not bcrypt.check_password_hash(registered_user.password, request.form['password']):   # Checks password correct
+        flash('Invalid Email/Password', 'login')
+        return redirect('/login') 
+
+
+    session['userid'] = registered_user.id
+    print('logged in' , registered_user.id)
+    return redirect('/dashboard')
+
+
+
+@app.route('/logout')       #Clears session and send back to login page
+def logout():
+
+    session.clear()
+    return render_template('login_page.html')
+
+
+
+
+
+
 
 
 @app.route('/user/feed')
@@ -33,26 +83,13 @@ def user_feed():
 
 @app.route('/users/<int:user_id>')
 def profile_page(user_id):
-    return render_template('profile_page.html')
-
-@app.route('/artists')
-def all_artists_page():
-    return render_template('all_artists_page.html')
+    if 'userid' not in session:
+        return redirect('/login')
 
 
-@app.route('/artists/<int:artist_id>')
-def one_artist_page(artist_id):
-    return render_template('single_artist_page.html')
+    user = User.get_user_by_id(user_id)
+    
+    return render_template('profile_page.html', user=user)
 
 
-@app.route('/admin/users')
-def admin_users():
-    return render_template('admin_users.html')
 
-@app.route('/admin/articles')
-def admin_articles():
-    return render_template('admin_articles.html')
-
-@app.route('/admin/artists')
-def admin_artists():
-    return render_template('admin_artists.html')

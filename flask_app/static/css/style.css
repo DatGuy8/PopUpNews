@@ -85,7 +85,52 @@
 }
 
 /* BASE.HTML END */
-/* DASHBOARD.HTML */
+
+/* ===========================LOGIN PAGE=========================== */
+.mt1rem{
+    margin-top: 1rem;
+}
+
+@media screen and (min-width:768px) {
+    
+    .two-form-div{
+        display:flex;
+        justify-content: space-around;
+    }
+}
+
+.form-div{
+    display:flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+.form-div input{
+    height: 2rem;
+}
+
+.button{
+    padding: .5rem;
+    background-color: #2b2b2b;
+    color: white;
+}
+.codered{
+    color: red;
+}
+.rounded{
+    border-radius: 0.3rem;
+}
+
+/* ===========================LOGIN PAGE END=========================== */
+
+
+/* ===========================DASHBOARD.HTML=========================== */
+.links{
+    color: black;
+    text-decoration: none;
+}
+.links:hover{
+    text-decoration: underline;
+}
 
 .mt3rem {
     margin-top: 3rem;
@@ -119,6 +164,13 @@
 .grid-span-6 {
     grid-column: span 6;
 }
+.border-bottom{
+    border-bottom: 1px solid #b3b3b3;
+}
+.border-right{
+    border-right:  1px solid #b3b3b3;
+    padding-right: 10px;
+}
 
 .user-widget {
     display: flex;
@@ -148,9 +200,16 @@
     grid-row-end: 3;
 }
 
+.grid-row-3-first{
+    grid-column-start:1;
+    grid-column-end:4;
+    grid-row-start: 1;
+    grid-row-end:3;
+}
+
 .top-articles {
     margin-top: 1rem;
-    height: 100px;
+    height: 20%;
 }
 
 .swiper {
@@ -201,9 +260,9 @@
     background-color: aliceblue;
 }
 
-/* DASHBOARD.HTML END*/
+/* ===========================DASHBOARD.HTML END=========================== */
 
-/* ARTICLES PAGE */
+/* ===========================ARTICLES PAGE=========================== */
 .dark-main-container {
     width: 100%;
 
@@ -211,12 +270,14 @@
     display: flex;
     align-items: center;
 }
-
+.text-white{
+    color:white;
+}
 .half-content {
     height: 100%;
     color: white;
-    object-fit: cover;
-
+    
+}
 
 @media screen and (min-width: 768px) {
     .dark-main-content {
@@ -226,7 +287,7 @@
     .half-content {
         width: 50%;
         height: 25rem;
-        object-fit: contain;
+        
         display: flex;
         align-items: center;
     }
@@ -237,6 +298,9 @@
         gap: 1rem;
         padding: 3rem;
         flex-wrap: auto;
+        height: 25rem;
+        overflow: scroll;
+        overflow-x: hidden;
     }
 }
 
@@ -251,7 +315,7 @@
 
 .half-content img {
     width: 100%;
-    height: 80%;
+    height: 24rem;
     object-fit: contain;
 }
 
@@ -278,9 +342,9 @@
     width: 10rem;
 }
 
-/* ARTICLES PAGE END */
+/* ===========================ARTICLES PAGE END=========================== */
 
-/* YOUR FEED */
+/* ===========================YOUR FEED=========================== */
 .mt2rem {
     margin-top: 2rem;
 }
@@ -297,26 +361,25 @@
     background-color: black;
 }
 
-/* YOUR FEED END */
+/* ===========================YOUR FEED END=========================== */
 
-
-/* ALL ARTISTS PAGE */
+/* ===========================ALL ARTISTS PAGE=========================== */
 .search-div {
     width: 100%;
 }
 
-.search-artist-form {
+.styled_search_form {
     margin-top: 1rem;
     margin-inline: auto;
     width: 300px;
 }
 
-.search-artist-form input {
+.styled_search_form input {
     padding: 10px;
     border-radius: 0.5rem;
 }
 
-.search-artist-form button {
+.styled_search_form button {
     padding: 10px;
     border-radius: 0.5rem;
     background-color: #2b2b2b;
@@ -382,10 +445,10 @@
     background-color: #ddd;
 }
 
-/* ALL ARTISTS PAGE END */
-/* SINGLE ARTIST PAGE */
+/* ===========================ALL ARTISTS PAGE END=========================== */
+/* ===========================SINGLE ARTIST PAGE=========================== */
 
-/* SINGLE ARTIST PAGE End */
+/* ===========================SINGLE ARTIST PAGE End=========================== */
 
 .small-4-featured {
     display: flex;
@@ -408,9 +471,9 @@
     width: 10rem;
 }
 
-/* ARTICLES PAGE END */
+/* ===========================ARTICLES PAGE END=========================== */
 
-/* YOUR FEED */
+/* ===========================YOUR FEED=========================== */
 .mt2rem {
     margin-top: 2rem;
 }
@@ -426,9 +489,9 @@
     background-color: black;
 }
 
-/* YOUR FEED END */
+/* ===========================YOUR FEED END=========================== */
 
-/* ALL ARTISTS PAGE */
+/* ===========================ALL ARTISTS PAGE=========================== */
 .search-div {
     width: 100%;
 }
@@ -468,8 +531,39 @@
     width: 100%;
 }
 
-/* ALL ARTISTS PAGE END */
-/* ONE ARTICLE PAGE */
+/* ===========================ALL ARTISTS PAGE END=========================== */
+/* ===========================ONE ARTICLE PAGE=========================== */
+
+.comment-input-div{
+    width: 100%;
+}
+.comment-box{
+    width: 100%;
+}
+
+.like-comment-div{
+    display: flex;
+    gap: 1rem;
+}
+
+.like-btn{
+    padding:.5rem;
+    background-color: black;
+    color: white;
+}
+
+.like-btn:hover{
+    background-color: #2b2b2b;
+    cursor: pointer;
+}
+
+.comment-form{
+    width: 100%;
+}
+.comment-form form{
+    display:flex;
+    gap: 1rem;
+}
 .one-article-page-img {
     width: 100%;
 }
@@ -501,6 +595,9 @@
     width: 90%;
     margin: 0 auto;
 }
+#article-content p{
+    margin-top: 1rem;
+}
 
 .article-title {
     font-weight: 900;
@@ -519,8 +616,8 @@
     gap: 1rem;
 }
 
-/* ONE ARTICLE PAGE END*/
-/* PROFILE PAGE */
+/* ===========================ONE ARTICLE PAGE END=========================== */
+/* ===========================PROFILE PAGE=========================== */
 .top-content-userpage {
     width: 100%;
 }
@@ -566,4 +663,4 @@
     
 }
 
-/* PROFILE PAGE END */
+/* ===========================PROFILE PAGE END=========================== */

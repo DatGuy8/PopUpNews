@@ -1,0 +1,39 @@
+{% extends 'base_admin.html' %} {% block title %}Admin Pop Up Articles{% endblock
+%} {% block content %}
+
+<div class="">
+    <div class="text-center page-width-sizing">
+
+        <div>
+            <form method="get" action="/admin/articles/search" class="styled_search_form">
+                <input type="text" placeholder="Search API For Articles" name="search_input"/>
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="page-width-sizing all-articles">
+        <h2>Add Articles From GNEWS</h2>
+        {% for article in articles %}
+        <form class="article-box" method="post" action="/admin/articles/add">
+            <div class="articles-img-box">
+                <img src="{{article.image}}" alt="article image" />
+            </div>
+            <div class="articles-info">
+                <h1>{{article.title}}</h1>
+                <p>{{article.source.url}}</p>
+                <p>{{article.publishedAt}}</p>
+            </div>
+            <input type="hidden" name="title" value="{{article.title}}" />
+            <input type="hidden" name="description" value="{{article.description}}" />
+            <input type="hidden" name="content" value="{{article.content}}" />
+            <input type="hidden" name="url" value="{{article.url}}" />
+            <input type="hidden" name="source_name" value="{{article.source.name}}" />
+            <input type="hidden" name="image" value="{{article.image}}" />
+            <input type="hidden" name="published_at" value="{{article.publishedAt}}" />
+            <input type="hidden" name="source_url" value="{{article.source.url}}" />
+            <button>Submit</button>
+        </form>
+        {% endfor %}
+    </div>
+</div>
+{% endblock%}
