@@ -51,7 +51,7 @@ content %}
                 <div class="padding-top-2">
                     <h3 id="Comments">Comments</h3>
                     <hr />
-                    {% for i in range(5) %}
+                    {% for comment in comments %}
                     <div class="one-comment mt2rem">
                         <div>
                             <img
@@ -59,22 +59,20 @@ content %}
                                 alt="userpic"
                                 class="user-pic-smaller"
                             />
+                            {{comment.username}}
                         </div>
                         <div>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Neque perferendis animi deleniti expedita
-                            cupiditate voluptatibus eligendi, earum est nemo
-                            quasi maxime incidunt provident laudantium sapiente
-                            magni et exercitationem natus. Eligendi?
+                            
+                            {{comment.comment}}
                             <div>
-                                123
+                                1
                                 <i class="fa-solid fa-thumbs-up"></i>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
                     <div class="comment-form mt2rem">
-                        <form>
+                        <form action="/articles/newcomment/{{article.id}}" method="POST">
                             <div>
 
                                 <img
@@ -82,10 +80,11 @@ content %}
                                 alt="userpic"
                                 class="user-pic-smaller"
                                 />
+                                
                             </div>
                             <div class="comment-input-div">
                                 <label for="comment"></label>
-                                <textarea name="comment" placeholder="Add Comment...." class="comment-box" rows="5"></textarea>
+                                <input type="text" name="comment" placeholder="Add Comment...." class="comment-box" />
                                 <button type="submit">Add Comment</button>
                             </div>
                         </form>

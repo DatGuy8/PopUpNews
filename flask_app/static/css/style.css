@@ -539,6 +539,8 @@
 }
 .comment-box{
     width: 100%;
+    height: 5rem;
+    resize: vertical;
 }
 
 .like-comment-div{
