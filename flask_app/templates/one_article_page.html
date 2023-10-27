@@ -25,10 +25,15 @@ content %}
                             {{article.likes}} Likes 145 Comments
                         </p>
                         <div class="like-comment-div">
-
+                            {% if session['userid'] not in article.user_likes %}
                             <form action="/articles/like/{{article.id}}" method="POST">
                                 <button class="like-btn"><i class="fa-solid fa-thumbs-up"></i> Like</button>
                             </form>
+                            {% else %}
+                            <form action="/articles/unlike/{{article.id}}" method="POST">
+                                <button class="like-btn"><i class="fa-solid fa-thumbs-up"></i> Unlike</button>
+                            </form>
+                            {% endif %}
                             <a href="#Comments"><button class="like-btn"><i class="fa-solid fa-comment"></i>Comment</button></a>
                         </div>
                     </div>

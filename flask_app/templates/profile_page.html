@@ -4,13 +4,10 @@ content %}
 <div class="top-content-userpage">
     <div class="left-block-userpage">
         <div class="user-widget">
-            <img
-                src="{{ url_for('static', filename='imgs/johntran1.jpg') }}"
-                class="user-pic mt2rem"
-            />
+            <img src="{{ url_for('static', filename='imgs/johntran1.jpg') }}" class="user-pic mt2rem" />
             <p>{{user.first_name}} {{user.last_name}}</p>
             <p># of Favorite Artists</p>
-            <p># of Favorite Articles</p>
+            <p>{{user.liked_articles|length}} Liked Articles</p>
             <div class="">
                 <i class="fa-solid fa-square-plus"></i>
                 Add Friend
@@ -21,19 +18,19 @@ content %}
         <h2 class="text-center">{{user.username}}'s Favorite Artists</h2>
         <div class="fav-artists-userpage">
             {% if user.favorite_artists %}
-                {%for artist in user.favorite_artists %}
+            {% for artist in user.favorite_artists %}
             <div class="one-artist">
-                <img
-                    src="{{artist.picture}}"
-                />
-                <div class="text-center"><p>{{artist.name}}</p></div>
+                <img src="{{artist.picture}}" />
+                <div class="text-center">
+                    <p>{{artist.name}}</p>
+                </div>
             </div>
-                {%endfor%}
+            {%endfor%}
             {%else%}
             <div>No favorite artists yet</div>
             {%endif%}
         </div>
-        <div class="pagination">
+        <!-- <div class="pagination">
             <a href="#">&laquo;</a>
             <a href="#">1</a>
             <a class="active" href="#">2</a>
@@ -42,30 +39,29 @@ content %}
             <a href="#">5</a>
             <a href="#">6</a>
             <a href="#">&raquo;</a>
-        </div>
+        </div> -->
     </div>
 </div>
 <div class="all-articles div page-width-sizing padding-top-2">
-    <h2 class="text-center">Saved Articles</h2>
-    {% for i in range(10)%}
-            <article class="article-box">
-                <div class="articles-img-box">
-                    <img
-                        src="https://media.pitchfork.com/photos/64f8d0b343ca374d323ca845/master/w_1600,c_limit/Olivia-Rodrigo.jpg"
-                    />
-                </div>
-                <div class="articles-info">
-                    <h1>Olivia Rodrigo to Perform at VMAs 2023</h1>
-                    <p>www.pitchfork.com</p>
-                    <p>September 3, 2023</p>
-                    <div>
-                        123
-                        <i class="fa-solid fa-thumbs-up"></i>
-                        145<i class="fa-solid fa-comment"></i>
-                    </div>
-                </div>
-            </article>
-            {%endfor%}
+    <h2 class="text-center">Liked Articles</h2>
+    {% for article in user.liked_articles%}
+    <article class="article-box">
+        <div class="articles-img-box">
+            <a href="/articles/{{article.id}}">
+                <img src="{{article.image}}" alt="article image" />
+            </a>
+        </div>
+        <div class="articles-info">
+            <h3>
+                <a href="/articles/{{article.id}}" class="links">{{article.title}}</a>
+            </h3>
+
+            <p>{{article.source_name}}</p>
+            <p>{{article.description}}</p>
+            
+        </div>
+    </article>
+    {%endfor%}
 </div>
 
 {% endblock %}
