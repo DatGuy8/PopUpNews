@@ -257,7 +257,7 @@
 
 .articles-info {
     width: 50%;
-    background-color: aliceblue;
+    padding: 20px;
 }
 
 /* ===========================DASHBOARD.HTML END=========================== */
@@ -524,7 +524,7 @@
     
     width: 200px;
     height: fit-content;
-    background-color: blanchedalmond;
+    
     margin: 10px;
 }
 .one-artist img{

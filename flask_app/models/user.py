@@ -19,7 +19,7 @@ class User:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.favorite_artists = []
-        self.favorite_articles = []
+        self.liked_articles = []
 
     @classmethod
     def add_user(cls,data):
@@ -39,15 +39,12 @@ class User:
     def get_user_by_id(cls,user_id):
         query = '''
             SELECT * FROM users 
-            LEFT JOIN favorite_artists 
-            ON users.id = favorite_artists.user_id 
-            LEFT JOIN artists 
-            ON favorite_artists.artist_id = artists.id 
+            LEFT JOIN favorite_artists ON users.id = favorite_artists.user_id 
+            LEFT JOIN artists ON favorite_artists.artist_id = artists.id 
             where users.id = %(id)s;
         '''
         data = {'id': user_id}
         results = connectToMySQL(cls.db).query_db(query, data)
-
         user = cls(results[0])
         
 
@@ -63,7 +60,8 @@ class User:
             user.favorite_artists.append(artist.Artist(artist_data))
         if(user.favorite_artists[0].id == None):
             user.favorite_artists = []
-        
+
+        user.liked_articles = article.Article.get_articles_by_user_id(user_id)
         return user
 
 

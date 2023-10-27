@@ -19,6 +19,7 @@ class Article:
         self.updated_at = data['updated_at']
         self.featured = data['featured']
         self.likes = 0
+        self.user_likes = []
 
 
     @classmethod
@@ -71,17 +72,27 @@ class Article:
     @classmethod
     def get_one_article(cls,article_id):
         query = """
-            SELECT articles.*, COUNT(article_likes.user_id) as likes_count
+            SELECT articles.*, article_likes.user_id
             FROM articles 
             LEFT JOIN article_likes ON article_likes.article_id = articles.id 
             WHERE articles.id = %(id)s;
         """
         data = {'id': article_id}
         results = connectToMySQL(cls.db).query_db(query,data)
-
         one_article = results[0]
+        
         article = cls(one_article)
-        article.likes = one_article['likes_count']
+
+        for row in results:
+            article.user_likes.append(row['user_id'])
+
+
+        if article.user_likes[0] is None:
+            article.likes = 0
+        else:
+            article.likes = len(article.user_likes)
+
+        print(article.user_likes[0])
         return article
 
     @classmethod
@@ -100,5 +111,24 @@ class Article:
         query = '''
             DELETE FROM articles where id = %(id)s;
         '''
+        # delete the likes first
+        article_like.ArticleLike.delete_by_article_id(article_id)
         data = {'id': article_id}
         return connectToMySQL(cls.db).query_db(query,data)
+    
+    @classmethod
+    def get_articles_by_user_id(cls, user_id):
+        query = '''
+            SELECT *
+            FROM articles
+            JOIN article_likes ON articles.id = article_likes.article_id
+            WHERE article_likes.user_id = %(id)s;
+        '''
+
+        data = {'id': user_id}
+        results = connectToMySQL(cls.db).query_db(query,data)
+        articles = []
+        
+        for article in results:
+            articles.append(cls(article))
+        return articles
