@@ -19,7 +19,7 @@ content %}
                     <p>{{article.published_at}}</p>
                 </div>
                 <div>
-                    
+
                     <div class="mt1rem">
                         <p>
                             {{article.likes}} Likes 145 Comments
@@ -34,16 +34,13 @@ content %}
                                 <button class="like-btn"><i class="fa-solid fa-thumbs-up"></i> Unlike</button>
                             </form>
                             {% endif %}
-                            <a href="#Comments"><button class="like-btn"><i class="fa-solid fa-comment"></i>Comment</button></a>
+                            <a href="#Comments"><button class="like-btn"><i
+                                        class="fa-solid fa-comment"></i>Comment</button></a>
                         </div>
                     </div>
 
                 </div>
-                <img
-                    src="{{article.image}}"
-                    alt="tupac"
-                    class="one-article-page-img mt2rem"
-                />
+                <img src="{{article.image}}" alt="tupac" class="one-article-page-img mt2rem" />
 
                 <div id="article-content" class="padding-top-2">
                     {{article.content}}
@@ -52,35 +49,54 @@ content %}
                     <h3 id="Comments">Comments</h3>
                     <hr />
                     {% for comment in comments %}
+                    
                     <div class="one-comment mt2rem">
                         <div>
-                            <img
-                                src="{{ url_for('static', filename='imgs/johntran1.jpg') }}"
-                                alt="userpic"
-                                class="user-pic-smaller"
-                            />
+                            <!-- <img src="{{ url_for('static', filename='imgs/johntran1.jpg') }}" alt="userpic"
+                                class="user-pic-smaller" /> -->
                             {{comment.username}}
                         </div>
                         <div>
-                            
+
                             {{comment.comment}}
+                        
                             <div>
                                 1
                                 <i class="fa-solid fa-thumbs-up"></i>
                             </div>
+                            {% if comment.replies %}
+                            {%for reply in comment.replies%}
+                            <div class="one-comment mt2rem">
+                                <div>
+                                    
+                                    {{reply.username}}
+                                </div>
+                                <div>
+        
+                                    {{reply.comment}}
+                                
+                                    <div>
+                                        1
+                                        <i class="fa-solid fa-thumbs-up"></i>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            {%endfor%}
+                            {%endif%}
                         </div>
+                        
                     </div>
+                    
                     {% endfor %}
                     <div class="comment-form mt2rem">
                         <form action="/articles/newcomment/{{article.id}}" method="POST">
                             <div>
 
-                                <img
-                                src="{{ url_for('static', filename='imgs/johntran1.jpg') }}"
-                                alt="userpic"
-                                class="user-pic-smaller"
-                                />
-                                
+                                <img src="{{ url_for('static', filename='imgs/johntran1.jpg') }}" alt="userpic"
+                                    class="user-pic-smaller" />
+
                             </div>
                             <div class="comment-input-div">
                                 <label for="comment"></label>

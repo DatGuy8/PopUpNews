@@ -79,6 +79,8 @@ class Article:
         """
         data = {'id': article_id}
         results = connectToMySQL(cls.db).query_db(query,data)
+        if not results:
+            return None
         one_article = results[0]
         
         article = cls(one_article)

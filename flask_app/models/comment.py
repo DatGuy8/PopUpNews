@@ -57,4 +57,21 @@ class Comment:
             }
             comments.append(cls(comment_data))
 
-        return comments
+        top_comments = []
+        replies = {}
+        for one_comment in comments:
+            if one_comment.parent_comment_id is None:
+                top_comments.append(one_comment)
+            else:
+                parent_id = one_comment.parent_comment_id
+                if parent_id not in replies:
+                    replies[parent_id] = [one_comment]
+                else:
+                    replies[parent_id].append(one_comment)
+
+        for comment in top_comments:
+            if comment.id in replies:
+                comment.replies = replies[comment.id]
+
+
+        return top_comments
