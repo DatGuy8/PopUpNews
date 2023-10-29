@@ -616,7 +616,12 @@
 .one-comment {
     display: flex;
     gap: 1rem;
+    width: 100%;
 }
+.comment-div{
+    width: 100%;
+}
+
 
 /* ===========================ONE ARTICLE PAGE END=========================== */
 /* ===========================PROFILE PAGE=========================== */

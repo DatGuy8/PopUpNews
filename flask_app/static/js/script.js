@@ -24,3 +24,19 @@ const swiper = new Swiper(".swiper", {
         },
     },
 });
+
+document.addEventListener('DOMContentLoaded', function(){
+    const replyButtons = document.querySelectorAll('.reply-button');
+    const replyForms = document.querySelectorAll('.reply-form');
+
+    replyButtons.forEach((button, index)=>{
+        button.addEventListener('click', function(){
+            const replyForm = replyForms[index];
+            replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+        })
+    })
+
+
+
+});
+

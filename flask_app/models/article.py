@@ -20,6 +20,7 @@ class Article:
         self.featured = data['featured']
         self.likes = 0
         self.user_likes = []
+        self.comment_count = 0
 
 
     @classmethod
@@ -36,9 +37,10 @@ class Article:
     @classmethod
     def get_all_articles(cls):
         query = '''
-            SELECT articles.*, COUNT(article_likes.user_id) as likes_count
-            FROM articles 
-            LEFT JOIN article_likes ON article_likes.article_id = articles.id 
+            SELECT articles.*, COUNT(DISTINCT article_likes.user_id) AS likes_count, COUNT(DISTINCT comments.id) AS comment_count
+            FROM articles
+            LEFT JOIN article_likes ON article_likes.article_id = articles.id
+            LEFT JOIN comments ON comments.article_id = articles.id
             GROUP BY articles.id;
         '''
         results = connectToMySQL(cls.db).query_db(query)
@@ -46,6 +48,7 @@ class Article:
         for article in results:
             one_article = cls(article)
             one_article.likes = article['likes_count']
+            one_article.comment_count = article['comment_count']
             articles.append(one_article)
         return articles
 

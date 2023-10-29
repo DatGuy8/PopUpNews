@@ -13,6 +13,7 @@ class Comment:
         self.updated_at = data['updated_at']
         self.username = data['username']
         
+        
 
     
     @classmethod

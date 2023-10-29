@@ -8,9 +8,9 @@ def add_comment(article_id):
     if 'userid' not in session:
         return redirect('/login')
     
-    print('commentroute')
+    parent_comment_id = request.form.get('parent_comment_id')
 
-    Comment.add_comment(article_id,session['userid'],request.form['parent_comment_id'],request.form['comment'])
+    Comment.add_comment(article_id,session['userid'],parent_comment_id,request.form['comment'])
     
     print('commentrouteafter')
     return redirect('/articles/' + str(article_id))
