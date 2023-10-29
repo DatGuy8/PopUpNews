@@ -10,7 +10,7 @@ def add_comment(article_id):
     
     print('commentroute')
 
-    Comment.add_comment(article_id,session['userid'],None,request.form['comment'])
+    Comment.add_comment(article_id,session['userid'],request.form['parent_comment_id'],request.form['comment'])
     
     print('commentrouteafter')
     return redirect('/articles/' + str(article_id))

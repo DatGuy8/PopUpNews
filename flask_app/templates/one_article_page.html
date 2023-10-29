@@ -54,7 +54,7 @@ content %}
                         <div>
                             <!-- <img src="{{ url_for('static', filename='imgs/johntran1.jpg') }}" alt="userpic"
                                 class="user-pic-smaller" /> -->
-                            {{comment.username}}
+                            <a href="/users/{{comment.user_id}}" class="links"><h3>{{comment.username}}</h3></a>
                         </div>
                         <div>
 
@@ -69,11 +69,11 @@ content %}
                             <div class="one-comment mt2rem">
                                 <div>
                                     
-                                    {{reply.username}}
+                                    <a href="/users/{{reply.user_id}}" class="links"><h3>{{reply.username}}</h3></a>
                                 </div>
                                 <div>
         
-                                    {{reply.comment}}
+                                    <p>{{reply.comment}}</p>
                                 
                                     <div>
                                         1
@@ -85,6 +85,18 @@ content %}
                             </div>
                             {%endfor%}
                             {%endif%}
+                            <div><p onclick="">reply</p></div>
+                            <div class="comment-form mt2rem">
+                                <form action="/articles/newcomment/{{article.id}}" method="POST">
+                                    
+                                    <div class="comment-input-div">
+                                        <label for="comment"></label>
+                                        <input type="text" name="comment" placeholder="Reply to Comment...." class="comment-box" />
+                                        <input type="hidden" name="parent_comment_id" value="{{comment.id}}">
+                                        <button type="submit">Reply to comment</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                         
                     </div>
@@ -101,7 +113,9 @@ content %}
                             <div class="comment-input-div">
                                 <label for="comment"></label>
                                 <input type="text" name="comment" placeholder="Add Comment...." class="comment-box" />
+                                <input type="hidden" name="parent_comment_id" value="Null">
                                 <button type="submit">Add Comment</button>
+
                             </div>
                         </form>
                     </div>
