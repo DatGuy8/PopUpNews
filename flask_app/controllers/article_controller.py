@@ -55,9 +55,19 @@ def like_article(article_id):
     if 'userid' not in session:
         return redirect('/login')
     
-    print(session['userid'])
+    
     user_id = session['userid']
 
     ArticleLike.add(user_id, article_id)
+
+    return redirect('/articles/' + str(article_id))
+
+@app.route('/articles/unlike/<int:article_id>',methods=['POST'])
+def unlike_article(article_id):
+    if 'userid' not in session:
+        return redirect('/login')
+    
+    user_id = session['userid']
+    ArticleLike.remove_like(user_id, article_id)
 
     return redirect('/articles/' + str(article_id))

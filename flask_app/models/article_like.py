@@ -23,9 +23,33 @@ class ArticleLike:
         return connectToMySQL(cls.db).query_db(query,data)
     
     @classmethod
+    def remove_like(cls,user_id,article_id):
+        query = '''
+            DELETE FROM article_likes WHERE user_id = %(user_id)s AND article_id = %(article_id)s;
+        '''
+        data = {
+            'user_id':user_id,
+            'article_id': article_id
+            }
+        return connectToMySQL(cls.db).query_db(query, data)
+    
+    @classmethod
     def delete_by_article_id(cls,article_id):
         query = '''
             DELETE FROM article_likes WHERE article_id = %(id)s;
         '''
         data = {'id' : article_id}
         return connectToMySQL(cls.db).query_db(query,data)
+
+    @classmethod
+    def get_users_id_by_article_id(cls,article_id):
+        query = '''
+            SELECT user_id FROM article_likes WHERE article_id = %(id)s;
+        '''
+        data = {'id': article_id}
+        results = connectToMySQL(cls.db).query_db(query,data)
+        users_ids = []
+        for row in results:
+            users_ids.append(row['user_id'])
+
+        return users_ids

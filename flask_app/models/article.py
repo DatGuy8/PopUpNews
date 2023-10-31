@@ -1,6 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 from flask_app.models import article_like
+from flask_app.models import comment
 
 
 class Article:
@@ -55,9 +56,10 @@ class Article:
     @classmethod
     def get_featured_articles(cls):
         query = '''
-            SELECT articles.*, COUNT(article_likes.user_id) as likes_count
+            SELECT articles.*, COUNT(DISTINCT article_likes.user_id) as likes_count, COUNT(DISTINCT comments.id) AS comment_count
             FROM articles
             LEFT JOIN article_likes ON article_likes.article_id = articles.id
+            LEFT JOIN comments ON comments.article_id = articles.id
             WHERE articles.featured = 1
             GROUP BY articles.id
             ORDER BY articles.updated_at DESC;
@@ -68,6 +70,7 @@ class Article:
         for article in results:
             one_article = cls(article)
             one_article.likes = article['likes_count']
+            one_article.comment_count = article['comment_count']
             featured.append(one_article)
         return featured
 
@@ -75,29 +78,22 @@ class Article:
     @classmethod
     def get_one_article(cls,article_id):
         query = """
-            SELECT articles.*, article_likes.user_id
+            SELECT articles.*, COUNT(DISTINCT comments.id) AS comment_count
             FROM articles 
-            LEFT JOIN article_likes ON article_likes.article_id = articles.id 
+            LEFT JOIN comments ON comments.article_id = articles.id
             WHERE articles.id = %(id)s;
         """
         data = {'id': article_id}
-        results = connectToMySQL(cls.db).query_db(query,data)
-        if not results:
-            return None
-        one_article = results[0]
+        result = connectToMySQL(cls.db).query_db(query,data)
+        
+        one_article = result[0]
         
         article = cls(one_article)
 
-        for row in results:
-            article.user_likes.append(row['user_id'])
+        article.user_likes = article_like.ArticleLike.get_users_id_by_article_id(article_id)
+        article.likes = len(article.user_likes)
+        article.comment_count = result[0]['comment_count']
 
-
-        if article.user_likes[0] is None:
-            article.likes = 0
-        else:
-            article.likes = len(article.user_likes)
-
-        print(article.user_likes[0])
         return article
 
     @classmethod
@@ -116,8 +112,10 @@ class Article:
         query = '''
             DELETE FROM articles where id = %(id)s;
         '''
-        # delete the likes first
+        # delete the likes
         article_like.ArticleLike.delete_by_article_id(article_id)
+        # delete comments
+        comment.Comment.delete_by_id(article_id)
         data = {'id': article_id}
         return connectToMySQL(cls.db).query_db(query,data)
     

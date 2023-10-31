@@ -22,7 +22,7 @@ content %}
 
                     <div class="mt1rem">
                         <p>
-                            {{article.likes}} Likes 145 Comments
+                            {{article.likes}} Likes {{article.comment_count}} Comments
                         </p>
                         <div class="like-comment-div">
                             {% if session['userid'] not in article.user_likes %}

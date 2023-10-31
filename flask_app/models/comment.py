@@ -76,3 +76,11 @@ class Comment:
 
 
         return top_comments
+    
+    @classmethod
+    def delete_by_id(cls, article_id):
+        query = '''
+            DELETE FROM comments where article_id = %(id)s;
+        '''
+        data = {'id': article_id}
+        return connectToMySQL(cls.db).query_db(query,data)

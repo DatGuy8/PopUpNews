@@ -27,7 +27,7 @@ content %}
                 <div>
                     {{featured[0].likes}}
                     <i class="fa-solid fa-thumbs-up"></i>
-                    145<i class="fa-solid fa-comment"></i>
+                    {{featured[0].comment_count}}<i class="fa-solid fa-comment"></i>
                 </div>
                 {% endif %}
             </article>
@@ -35,7 +35,7 @@ content %}
         <div class="grid-start-4">
             <article class="grid-container-6  border-right">
                 <div class="grid-span-3">
-                    {% if featured %}
+                    {% if featured[1] %}
                     <h2>
                         <a href="/articles/{{featured[1].id}}" class="links">{{featured[1].title}}</a>
                     </h2>
@@ -44,7 +44,7 @@ content %}
                     <div>
                         {{featured[1].likes}}
                         <i class="fa-solid fa-thumbs-up"></i>
-                        145<i class="fa-solid fa-comment"></i>
+                        {{featured[1].comment_count}}<i class="fa-solid fa-comment"></i>
                     </div>
                 </div>
                 <div class="grid-span-3">
@@ -120,7 +120,7 @@ content %}
                     </h1>
 
                     <p>{{article.source_name}}</p>
-                    <p>{{article.description}}</p>
+                    
                     <div>
                         {{article.likes}}
                         <i class="fa-solid fa-thumbs-up"></i>
