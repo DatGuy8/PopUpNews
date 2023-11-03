@@ -6,7 +6,7 @@ content %}
         <div class="user-widget">
             <img src="{{ url_for('static', filename='imgs/johntran1.jpg') }}" class="user-pic mt2rem" />
             <p>{{user.first_name}} {{user.last_name}}</p>
-            <p># of Favorite Artists</p>
+            <p>{{user.favorite_artists|length}} Favorited Artists</p>
             <p>{{user.liked_articles|length}} Liked Articles</p>
             <div class="">
                 <i class="fa-solid fa-square-plus"></i>

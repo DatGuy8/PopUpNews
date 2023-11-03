@@ -25,12 +25,12 @@ const swiper = new Swiper(".swiper", {
     },
 });
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
     const replyButtons = document.querySelectorAll('.reply-button');
     const replyForms = document.querySelectorAll('.reply-form');
 
-    replyButtons.forEach((button, index)=>{
-        button.addEventListener('click', function(){
+    replyButtons.forEach((button, index) => {
+        button.addEventListener('click', function () {
             const replyForm = replyForms[index];
             replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
         })
@@ -39,4 +39,26 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 });
+
+
+var likeForms = document.querySelectorAll('.likeForm');
+
+likeForms.forEach(function(likeForm){
+    likeForm.onsubmit = function (e) {
+        e.preventDefault();
+        var formData = new FormData(likeForm);
+        console.log(formData);
+        fetch("http://localhost:5000/testing", { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                var likesCount = likeForm.querySelector('.likes-count')
+                likesCount.textContent = data.likes_count;
+            })
+            .catch(err => {console.log(err)})
+    }
+
+})
+
+
 

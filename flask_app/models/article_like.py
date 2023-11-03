@@ -53,3 +53,15 @@ class ArticleLike:
             users_ids.append(row['user_id'])
 
         return users_ids
+
+    @classmethod
+    def like_count_by_article_id(cls,article_id):
+        query = '''
+            SELECT COUNT(*) AS like_count
+            FROM article_likes
+            WHERE article_id = %(id)s;
+        '''
+        data = {"id" : article_id}
+        result = connectToMySQL(cls.db).query_db(query,data)
+
+        return result[0]['like_count']

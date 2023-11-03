@@ -50,6 +50,7 @@ class Article:
             one_article = cls(article)
             one_article.likes = article['likes_count']
             one_article.comment_count = article['comment_count']
+            one_article.user_likes = article_like.ArticleLike.get_users_id_by_article_id(article['id'])
             articles.append(one_article)
         return articles
 
@@ -70,6 +71,7 @@ class Article:
         for article in results:
             one_article = cls(article)
             one_article.likes = article['likes_count']
+            one_article.user_likes = article_like.ArticleLike.get_users_id_by_article_id(article['id'])
             one_article.comment_count = article['comment_count']
             featured.append(one_article)
         return featured

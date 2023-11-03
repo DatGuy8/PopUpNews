@@ -4,6 +4,7 @@ from flask_app.models.article import Article
 from flask_app.models.artist import Artist
 from flask_app.models.article_like import ArticleLike
 from flask_app.models.comment import Comment
+from flask_app.models.user import User
 
 
 
@@ -15,20 +16,9 @@ def homepage():
     articles = Article.get_all_articles()
     artists = Artist.get_all_artists()
     featured = Article.get_featured_articles()
-    # response = requests.get(f"https://gnews.io/api/v4/top-headlines?category=entertainment&lang=en&country=us&max=10&apikey={os.environ.get('GNEWS_API_KEY')}")
+    user = User.get_user_by_id(session['userid'])
     
-    # if response.status_code == 200:
-    #     articles = response.json().get('articles')
-
-    #     for article in articles:
-    #         published_at = article.get('publishedAt')
-    #         if published_at:
-    #             article['publishedAt'] = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ").strftime("%Y-%m-%d %H:%M:%S")
-
-    # else:
-    #     articles = []
-    
-    return render_template('dashboard.html',articles=articles, artists=artists,featured=featured) # if user logged in send to dashboard
+    return render_template('dashboard.html',articles=articles, artists=artists,featured=featured,user=user) # if user logged in send to dashboard
 
 
 
@@ -71,3 +61,19 @@ def unlike_article(article_id):
     ArticleLike.remove_like(user_id, article_id)
 
     return redirect('/articles/' + str(article_id))
+
+@app.route('/testing',methods=['POST'])
+def testing():
+    if 'userid' not in session:
+        return redirect('/login')
+    
+    
+    user_id = session['userid']
+    article_id = request.form['article_id']
+    print(ArticleLike.like_count_by_article_id(article_id))
+    ArticleLike.add(user_id, article_id)
+    likes_count = ArticleLike.like_count_by_article_id(article_id)
+    print("after", likes_count)
+    # write code to save it to our database . . .
+    return jsonify({'likes_count': likes_count})
+    
