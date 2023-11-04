@@ -8,7 +8,7 @@ content %}
                 <!-- <img src="{{ url_for('static', filename='imgs/johntran1.jpg') }}" class="user-pic" /> -->
                 <p>{{user.username}}</p>
                 <p>{{user.favorite_artists|length}} Favorite Artists</p>
-                <p>{{user.liked_articles|length}} Favorite Articles</p>
+                <p><span id="article-count">{{user.liked_articles|length}}</span> Favorite Articles</p>
             </div>
         </div>
         <div class="grid-span-6 border-right">
@@ -141,7 +141,7 @@ content %}
                         <form class="likeForm" method="POST">
                             <div class="likes-count">{{article.likes}}</div>
                             <input type="hidden" value="{{article.id}}" name="article_id">
-                            <button class="simple-like"><i class="fa-regular fa-thumbs-up"></i></button>
+                            <button class="simple-like"><i class="fa-regular fa-thumbs-up thumb"></i></button>
                         </form>
                         {% else %}
                         <form class="likeForm" method="POST">

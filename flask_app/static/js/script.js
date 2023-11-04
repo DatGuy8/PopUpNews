@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
+var articleLikedCount = document.getElementById('article-count').textContent;
+console.log(articleLikedCount);
 var likeForms = document.querySelectorAll('.likeForm');
 
 likeForms.forEach(function(likeForm){
@@ -52,8 +53,12 @@ likeForms.forEach(function(likeForm){
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                var likesCount = likeForm.querySelector('.likes-count')
+                var likesCount = likeForm.querySelector('.likes-count');
+                var thumbsUp = likeForm.querySelector('.thumb');
                 likesCount.textContent = data.likes_count;
+                thumbsUp.className = 'fa-solid fa-thumbs-up'
+                articleLikedCount++;
+                document.getElementById('article-count').textContent = articleLikedCount;
             })
             .catch(err => {console.log(err)})
     }
