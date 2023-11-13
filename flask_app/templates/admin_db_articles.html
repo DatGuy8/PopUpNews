@@ -11,9 +11,7 @@ endblock %} {% block content %}
     <div class="page-width-sizing all-articles mt3rem">
         <h2>Articles in Database</h2>
         {% for article in articles %}
-        <div
-            class="article-box"
-        >
+        <div class="article-box">
             <div class="articles-img-box">
                 <img src="{{article.image}}" alt="article image" />
             </div>
@@ -22,18 +20,32 @@ endblock %} {% block content %}
                 <p>{{article.source_url}}</p>
                 <p>{{article.published_at}}</p>
             </div>
-            <form  method="post"
-            action="/admin/articles/feature/{{article.id}}">
-            <input type="hidden" name="featured" value="{{article.featured}}" />
-            {% if article.featured %}
-            <button>Unfeature</button>
-            {% else %}
-            <button>Feature</button>
-            {% endif %}
-        </form>
-        <form method="post" action="/admin/articles/delete/{{article.id}}">
-            <button>Delete Article</button>
-        </form>
+
+            <div>
+
+                {% if article.featured %}
+                <form method="post" action="/admin/articles/feature/{{article.id}}">
+                    <input type="hidden" name="featured" value="{{article.featured}}" />
+                    <button>Unfeature</button>
+                </form>
+                <form action="/articles/priority/{{article.id}}" method="POST">
+                    <div class="dflex">
+
+                        <input type="number" name="priority" value="{{article.priority}}" style="width:50px">
+                        <button>Change Priority</button>
+                    </div>
+                </form>
+                {% else %}
+                <form method="post" action="/admin/articles/feature/{{article.id}}">
+                    <input type="hidden" name="featured" value="{{article.featured}}" />
+                    <button>Feature</button>
+                </form>
+                {% endif %}
+
+                <form method="post" action="/admin/articles/delete/{{article.id}}">
+                    <button>Delete Article</button>
+                </form>
+            </div>
         </div>
 
         {% endfor %}

@@ -55,3 +55,11 @@ def delete_article(article_id):
 
     Article.delete(article_id)
     return redirect('/admin/savedarticles')
+
+
+@app.route('/articles/priority/<int:article_id>',methods=['POST'])
+def change_priority(article_id):
+
+    user_id = session['userid']
+    Article.update_priority(article_id,request.form['priority'])
+    return redirect('/admin/savedarticles')

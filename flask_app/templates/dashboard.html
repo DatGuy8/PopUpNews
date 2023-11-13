@@ -59,14 +59,14 @@ content %}
         <div class="grid-row-end-2">
             <h3>Top Articles</h3>
             <hr />
-            {% for article in articles[:4] %}
+            {% for article in featured[2:4] %}
             <article class="top-articles">
                 <div>
                     <a href="/articles/{{article.id}}" class="links">
                         <h4>{{article.title}}</h4>
                     </a>
                     <p>{{article.source_name}}</p>
-                    <div>
+                    <div class="like-comment-div">
                         {{article.likes}}
                         {% if session['userid'] not in article.user_likes %}
                         <form id="toplikeForm" method="POST">
@@ -140,15 +140,17 @@ content %}
                         {% if session['userid'] not in article.user_likes %}
                         <form class="likeForm" method="POST">
                             <div class="likes-count">{{article.likes}}</div>
+                            <input type="hidden" value="FALSE" name="liked">
                             <input type="hidden" value="{{article.id}}" name="article_id">
                             <button class="simple-like"><i class="fa-regular fa-thumbs-up thumb"></i></button>
                         </form>
                         {% else %}
                         <form class="likeForm" method="POST">
-                            
+
                             <div class="likes-count">{{article.likes}}</div>
+                            <input type="hidden" value="TRUE" name="liked">
                             <input type="hidden" value="{{article.id}}" name="article_id">
-                            <button class="simple-like"><i class="fa-solid fa-thumbs-up"></i></button>
+                            <button class="simple-like"><i class="fa-solid fa-thumbs-up thumb"></i></button>
 
                         </form>
                         {% endif %}

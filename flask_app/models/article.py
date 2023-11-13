@@ -18,6 +18,7 @@ class Article:
         self.source_url = data['source_url']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.priority = data['priority']
         self.featured = data['featured']
         self.likes = 0
         self.user_likes = []
@@ -28,9 +29,9 @@ class Article:
     def add_article(cls,data):
         query = '''
             INSERT INTO articles 
-            (title, description, content, url, image, published_at, source_name, source_url, created_at, updated_at) 
+            (title, description, content, url, image, published_at, source_name, source_url,priority, created_at, updated_at) 
             VALUES 
-            (%(title)s,%(description)s,%(content)s,%(url)s,%(image)s,%(published_at)s,%(source_name)s,%(source_url)s,NOW(),NOW());
+            (%(title)s,%(description)s,%(content)s,%(url)s,%(image)s,%(published_at)s,%(source_name)s,%(source_url)s,%(priority)s,NOW(),NOW());
         '''
         return connectToMySQL(cls.db).query_db(query,data)
 
@@ -63,9 +64,8 @@ class Article:
             LEFT JOIN comments ON comments.article_id = articles.id
             WHERE articles.featured = 1
             GROUP BY articles.id
-            ORDER BY articles.updated_at DESC;
+            ORDER BY articles.priority DESC;
         '''
-
         results = connectToMySQL(cls.db).query_db(query)
         featured = []
         for article in results:
@@ -76,6 +76,26 @@ class Article:
             featured.append(one_article)
         return featured
 
+    @classmethod
+    def get_not_featured_articles(cls):
+        query = '''
+            SELECT articles.*, COUNT(DISTINCT article_likes.user_id) as likes_count, COUNT(DISTINCT comments.id) AS comment_count
+            FROM articles
+            LEFT JOIN article_likes ON article_likes.article_id = articles.id
+            LEFT JOIN comments ON comments.article_id = articles.id
+            WHERE articles.featured = 0
+            GROUP BY articles.id
+            ORDER BY articles.updated_at DESC;
+        '''
+        results = connectToMySQL(cls.db).query_db(query)
+        articles = []
+        for article in results:
+            one_article = cls(article)
+            one_article.likes = article['likes_count']
+            one_article.user_likes = article_like.ArticleLike.get_users_id_by_article_id(article['id'])
+            one_article.comment_count = article['comment_count']
+            articles.append(one_article)
+        return articles
 
     @classmethod
     def get_one_article(cls,article_id):
@@ -137,3 +157,17 @@ class Article:
         for article in results:
             articles.append(cls(article))
         return articles
+    
+    @classmethod
+    def update_priority(cls,article_id, priority_int):
+        query = '''
+            UPDATE articles SET priority = %(priority_int)s
+            WHERE id = %(article_id)s;
+        '''
+
+        data = {
+            'article_id': article_id,
+            'priority_int': priority_int
+        }
+
+        return connectToMySQL(cls.db).query_db(query,data)

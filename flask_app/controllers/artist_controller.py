@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash, jsonify
 from flask_app.models.artist import Artist
+from flask_app.models.user import User
 from datetime import datetime
 from flask_app.models.favorite_artist import FavoriteArtist
 import os
@@ -52,6 +53,9 @@ def add_artist_to_db():
 
 @app.route('/artists/<int:artist_id>')
 def one_artist_page(artist_id):
+
+    user_id = session['userid']
+    user = User.get_user_by_id(user_id)
     artist = Artist.get_one_artist(artist_id)
 
     response = requests.get(
@@ -68,7 +72,7 @@ def one_artist_page(artist_id):
         articles = []
     print(response)
 
-    return render_template('single_artist_page.html', artist=artist, articles=articles)
+    return render_template('single_artist_page.html', artist=artist, articles=articles, user=user)
 
 
 @app.route('/artists/favorite/<int:artist_id>',methods=['POST'])

@@ -12,10 +12,20 @@
         <div class="half-content">
             <h1>{{artist.name}}</h1>
             <p>
+                {% if artist.id in user.favorite_artists %}
                 <form action="/artists/favorite/{{artist.id}}" method="POST">
+                    <input type="hidden" value="FALSE" name="favorite">
                     <button>Favorite</button>
+                    
+                </form>
+                {% else %}
+                <form action="/artists/unfavorite/{{artist.id}}" method="POST">
+                    <input type="hidden" value="TRUE" name="favorite">
+                    <button>Remove from Favorites</button>
 
                 </form>
+                
+                {%endif%}
             </p>
             <p>{{artist.bio}}</p>
         </div>

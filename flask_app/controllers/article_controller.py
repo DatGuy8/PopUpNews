@@ -13,9 +13,10 @@ def homepage():
     if 'userid' not in session:
         return redirect('/login')
 
-    articles = Article.get_all_articles()
+    articles = Article.get_not_featured_articles()
     artists = Artist.get_all_artists()
     featured = Article.get_featured_articles()
+
     user = User.get_user_by_id(session['userid'])
     
     return render_template('dashboard.html',articles=articles, artists=artists,featured=featured,user=user) # if user logged in send to dashboard
@@ -62,18 +63,25 @@ def unlike_article(article_id):
 
     return redirect('/articles/' + str(article_id))
 
-@app.route('/testing',methods=['POST'])
+@app.route('/articles/dashboard/like',methods=['POST'])
 def testing():
     if 'userid' not in session:
         return redirect('/login')
     
-    
-    user_id = session['userid']
     article_id = request.form['article_id']
-    print(ArticleLike.like_count_by_article_id(article_id))
-    ArticleLike.add(user_id, article_id)
+    user_id = session['userid']
+    liked = request.form['liked']
+    
+    if liked == 'TRUE':
+        ArticleLike.remove_like(user_id, article_id)
+        print('here')
+    else:
+        ArticleLike.add(user_id, article_id)
+        print('there')
+
+
     likes_count = ArticleLike.like_count_by_article_id(article_id)
-    print("after", likes_count)
-    # write code to save it to our database . . .
+
     return jsonify({'likes_count': likes_count})
     
+

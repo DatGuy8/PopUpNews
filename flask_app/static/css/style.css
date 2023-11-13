@@ -557,6 +557,10 @@
     display: flex;
     gap: 1rem;
 }
+.like-comment-div form{
+    display: flex;
+    gap: .5rem;
+}
 
 .like-btn{
     padding:.5rem;

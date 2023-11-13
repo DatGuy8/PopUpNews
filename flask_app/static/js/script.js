@@ -47,18 +47,21 @@ var likeForms = document.querySelectorAll('.likeForm');
 likeForms.forEach(function(likeForm){
     likeForm.onsubmit = function (e) {
         e.preventDefault();
+        var likedInput = likeForm.querySelector('input[name="liked"]');
         var formData = new FormData(likeForm);
-        console.log(formData);
-        fetch("http://localhost:5000/testing", { method: 'POST', body: formData })
+        console.log(likedInput);
+        fetch("http://localhost:5000/articles/dashboard/like", { method: 'POST', body: formData })
             .then(response => response.json())
             .then(data => {
                 console.log(data);
                 var likesCount = likeForm.querySelector('.likes-count');
                 var thumbsUp = likeForm.querySelector('.thumb');
                 likesCount.textContent = data.likes_count;
-                thumbsUp.className = 'fa-solid fa-thumbs-up'
+                thumbsUp.className = thumbsUp.className === 'fa-solid fa-thumbs-up thumb' ? 'fa-regular fa-thumbs-up thumb': 'fa-solid fa-thumbs-up thumb';
                 articleLikedCount++;
                 document.getElementById('article-count').textContent = articleLikedCount;
+                console.log('value ', likedInput.value)
+                likedInput.value = likedInput.value === 'TRUE' ? 'FALSE' : 'TRUE';
             })
             .catch(err => {console.log(err)})
     }
