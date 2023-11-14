@@ -20,6 +20,7 @@ class User:
         self.updated_at = data['updated_at']
         self.favorite_artists = []
         self.liked_articles = []
+        self.favorite_artists_ids = []
 
     @classmethod
     def add_user(cls,data):
@@ -58,9 +59,10 @@ class User:
                 'updated_at': row['artists.updated_at']
             }
             user.favorite_artists.append(artist.Artist(artist_data))
+            user.favorite_artists_ids.append(row['artists.id'])
         if(user.favorite_artists[0].id == None):
             user.favorite_artists = []
-
+        print(user.favorite_artists_ids)
         user.liked_articles = article.Article.get_articles_by_user_id(user_id)
         return user
 
