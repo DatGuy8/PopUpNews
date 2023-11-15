@@ -35,7 +35,7 @@ def admin_artists():
 @app.route('/admin/articles/add', methods=['POST'])
 def add_article_to_db():
     article = Article.add_article(request.form)
-    return redirect('/dashboard')
+    return redirect('/admin/savedarticles')
 
 @app.route('/admin/savedarticles')
 def admin_saved_articles():
