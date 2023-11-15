@@ -55,6 +55,7 @@ class Article:
             articles.append(one_article)
         return articles
 
+    
     @classmethod
     def get_featured_articles(cls):
         query = '''

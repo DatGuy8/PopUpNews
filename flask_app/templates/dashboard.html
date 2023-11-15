@@ -24,9 +24,25 @@ content %}
                 </h1>
                 <p>{{featured[0].source_name}}</p>
                 <p>{{featured[0].published_at}}</p>
-                <div>
-                    {{featured[0].likes}}
-                    <i class="fa-solid fa-thumbs-up"></i>
+                <div class="like-comment-div">
+                    {% if session['userid'] not in featured[0].user_likes %}
+                    <form class="likeForm" method="POST">
+                        <div class="likes-count">{{featured[0].likes}}</div>
+                        <input type="hidden" value="FALSE" name="liked">
+                        <input type="hidden" value="{{featured[0].id}}" name="article_id">
+                        <button class="simple-like"><i class="fa-regular fa-thumbs-up thumb"></i></button>
+                    </form>
+                    {% else %}
+                    <form class="likeForm" method="POST">
+
+                        <div class="likes-count">{{featured[0].likes}}</div>
+                        <input type="hidden" value="TRUE" name="liked">
+                        <input type="hidden" value="{{featured.id}}" name="article_id">
+                        <button class="simple-like"><i class="fa-solid fa-thumbs-up thumb"></i></button>
+
+                    </form>
+                    {% endif %}
+
                     {{featured[0].comment_count}}<i class="fa-solid fa-comment"></i>
                 </div>
                 {% endif %}
@@ -41,9 +57,25 @@ content %}
                     </h2>
                     <p>{{featured[1].source_name}}</p>
                     <p>{{featured[1].published_at}}</p>
-                    <div>
-                        {{featured[1].likes}}
-                        <i class="fa-solid fa-thumbs-up"></i>
+                    <div class="like-comment-div">
+                        {% if session['userid'] not in featured[1].user_likes %}
+                        <form class="likeForm" method="POST">
+                            <div class="likes-count">{{featured[1].likes}}</div>
+                            <input type="hidden" value="FALSE" name="liked">
+                            <input type="hidden" value="{{featured[1].id}}" name="article_id">
+                            <button class="simple-like"><i class="fa-regular fa-thumbs-up thumb"></i></button>
+                        </form>
+                        {% else %}
+                        <form class="likeForm" method="POST">
+    
+                            <div class="likes-count">{{featured[1].likes}}</div>
+                            <input type="hidden" value="TRUE" name="liked">
+                            <input type="hidden" value="{{featured.id}}" name="article_id">
+                            <button class="simple-like"><i class="fa-solid fa-thumbs-up thumb"></i></button>
+    
+                        </form>
+                        {% endif %}
+    
                         {{featured[1].comment_count}}<i class="fa-solid fa-comment"></i>
                     </div>
                 </div>
