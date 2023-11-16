@@ -37,13 +37,16 @@ content %}
 
                         <div class="likes-count">{{featured[0].likes}}</div>
                         <input type="hidden" value="TRUE" name="liked">
-                        <input type="hidden" value="{{featured.id}}" name="article_id">
+                        <input type="hidden" value="{{featured[0].id}}" name="article_id">
                         <button class="simple-like"><i class="fa-solid fa-thumbs-up thumb"></i></button>
 
                     </form>
                     {% endif %}
 
-                    {{featured[0].comment_count}}<i class="fa-solid fa-comment"></i>
+                    {{featured[0].comment_count}}
+                    <a href="/articles/{{featured[0].id}}" class="simple-like links">
+                        <i class="fa-solid fa-comment"></i>
+                    </a>
                 </div>
                 {% endif %}
             </article>
@@ -67,16 +70,19 @@ content %}
                         </form>
                         {% else %}
                         <form class="likeForm" method="POST">
-    
+
                             <div class="likes-count">{{featured[1].likes}}</div>
                             <input type="hidden" value="TRUE" name="liked">
-                            <input type="hidden" value="{{featured.id}}" name="article_id">
+                            <input type="hidden" value="{{featured[1].id}}" name="article_id">
                             <button class="simple-like"><i class="fa-solid fa-thumbs-up thumb"></i></button>
-    
+
                         </form>
                         {% endif %}
-    
-                        {{featured[1].comment_count}}<i class="fa-solid fa-comment"></i>
+
+                        {{featured[1].comment_count}}
+                        <a href="/articles/{{featured[1].id}}" class="simple-like links">
+                            <i class="fa-solid fa-comment"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="grid-span-3">
@@ -91,7 +97,7 @@ content %}
         <div class="grid-row-end-2">
             <h3>Top Articles</h3>
             <hr />
-            {% for article in featured[2:4] %}
+            {% for article in featured[2:6] %}
             <article class="top-articles">
                 <div>
                     <a href="/articles/{{article.id}}" class="links">
@@ -99,20 +105,27 @@ content %}
                     </a>
                     <p>{{article.source_name}}</p>
                     <div class="like-comment-div">
-                        {{article.likes}}
                         {% if session['userid'] not in article.user_likes %}
-                        <form id="toplikeForm" method="POST">
+                        <form class="likeForm" method="POST">
+                            <div class="likes-count">{{article.likes}}</div>
+                            <input type="hidden" value="FALSE" name="liked">
                             <input type="hidden" value="{{article.id}}" name="article_id">
-                            <button class="simple-like"><i class="fa-regular fa-thumbs-up"></i></button>
+                            <button class="simple-like"><i class="fa-regular fa-thumbs-up thumb"></i></button>
                         </form>
                         {% else %}
-                        <form action="/articles/unlike/{{article.id}}" method="POST">
-                            <button class="simple-like"><i class="fa-solid fa-thumbs-up"></i></button>
+                        <form class="likeForm" method="POST">
+
+                            <div class="likes-count">{{article.likes}}</div>
+                            <input type="hidden" value="TRUE" name="liked">
+                            <input type="hidden" value="{{article.id}}" name="article_id">
+                            <button class="simple-like"><i class="fa-solid fa-thumbs-up thumb"></i></button>
 
                         </form>
                         {% endif %}
 
-                        {{article.comment_count}}<i class="fa-solid fa-comment"></i>
+                        {{article.comment_count}}<a href="/articles/{{article.id}}" class="simple-like links">
+                            <i class="fa-solid fa-comment"></i>
+                        </a>
                     </div>
                     <hr>
                 </div>
@@ -187,7 +200,9 @@ content %}
                         </form>
                         {% endif %}
 
-                        {{article.comment_count}}<i class="fa-solid fa-comment"></i>
+                        {{article.comment_count}}<a href="/articles/{{article.id}}" class="simple-like links">
+                            <i class="fa-solid fa-comment"></i>
+                        </a>
                     </div>
                 </div>
             </article>

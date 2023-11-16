@@ -11,16 +11,47 @@
 }
 
 /* BASE.HTML */
-
-#top-nav {
-    width: 100vw;
-    height: 125px;
-    background-color: black;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@media screen and (min-width: 1024px) {
+    #top-nav {
+        width: 100vw;
+        height: 125px;
+        background-color: black;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: height 0.5s ease;
+    }
 }
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    #top-nav {
+        width: 100vw;
+        height: 100px;
+        background-color: black;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: height 0.5s ease;
+    }
+    
+}
+@media screen and (max-width: 767px) {
+    #top-nav {
+        width: 100vw;
+        height: 75px;
+        background-color: black;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        transition: height 0.5s ease, justify-content 0.5s ease;
+    }
+    #PopUpNews-Logo{
+        margin-left: 1rem;
+    }
+}
+
 
 #bottom-nav {
     width: 100vw;
@@ -155,16 +186,43 @@
     margin-top: 3rem;
 }
 
-.grid-container-12 {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1rem;
+@media screen and (min-width:1024px) {
+    .grid-container-12 {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+    }
+    .border-right{
+        border-right:  1px solid #b3b3b3;
+        padding-right: 10px;
+    }
+    .grid-container-6 {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1rem;
+    }
+    .article-box {
+        height: 200px;
+    
+        width: 70%;
+        display: flex;
+        gap: 3rem;
+    }
 }
-
-.grid-container-6 {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1rem;
+@media screen and (max-width: 1023px) {
+    .grid-container-12{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .grid-container-6 {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 1rem;
+    }
+    .article-box{
+        width: 100%;
+    }
 }
 
 .grid-span-3 {
@@ -176,10 +234,6 @@
 }
 .border-bottom{
     border-bottom: 1px solid #b3b3b3;
-}
-.border-right{
-    border-right:  1px solid #b3b3b3;
-    padding-right: 10px;
 }
 
 .user-widget {
@@ -241,12 +295,28 @@
     margin: 1rem auto;
 }
 
-.article-box {
-    height: 200px;
-
-    width: 70%;
-    display: flex;
-    gap: 3rem;
+@media screen and (min-width:1024px) {
+    
+    .article-box {
+        height: 200px;
+    
+        width: 70%;
+        display: flex;
+        gap: 3rem;
+    }
+    .articles-img-box {
+        width: 50%;
+    }
+    .articles-info {
+        width: 50%;
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 1023px) {
+    
+    .article-box{
+        width: 100%;
+    }
 }
 
 .all-articles {
@@ -255,9 +325,6 @@
     gap: 1rem;
 }
 
-.articles-img-box {
-    width: 50%;
-}
 
 .articles-img-box img {
     width: 100%;
@@ -265,10 +332,6 @@
     object-fit: cover;
 }
 
-.articles-info {
-    width: 50%;
-    padding: 20px;
-}
 
 /* ===========================DASHBOARD.HTML END=========================== */
 

@@ -65,7 +65,7 @@ class Article:
             LEFT JOIN comments ON comments.article_id = articles.id
             WHERE articles.featured = 1
             GROUP BY articles.id
-            ORDER BY articles.priority ASC;
+            ORDER BY articles.priority DESC;
         '''
         results = connectToMySQL(cls.db).query_db(query)
         featured = []

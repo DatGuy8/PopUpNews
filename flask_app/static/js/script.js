@@ -53,12 +53,16 @@ likeForms.forEach(function(likeForm){
         fetch("http://localhost:5000/articles/dashboard/like", { method: 'POST', body: formData })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                console.log(articleLikedCount);
                 var likesCount = likeForm.querySelector('.likes-count');
                 var thumbsUp = likeForm.querySelector('.thumb');
                 likesCount.textContent = data.likes_count;
                 thumbsUp.className = thumbsUp.className === 'fa-solid fa-thumbs-up thumb' ? 'fa-regular fa-thumbs-up thumb': 'fa-solid fa-thumbs-up thumb';
-                articleLikedCount++;
+                if(likedInput.value === 'FALSE'){
+                    articleLikedCount++;
+                }else{
+                    articleLikedCount -= 1;
+                }
                 document.getElementById('article-count').textContent = articleLikedCount;
                 console.log('value ', likedInput.value)
                 likedInput.value = likedInput.value === 'TRUE' ? 'FALSE' : 'TRUE';
