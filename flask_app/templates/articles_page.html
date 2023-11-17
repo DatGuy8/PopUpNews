@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %}Pop Up Articles{% endblock %} {%
+{% extends 'base_articles.html' %} {% block title %}Pop Up Articles{% endblock %} {%
 block content %}
 
 <div class="dark-main-container">
@@ -43,22 +43,8 @@ block content %}
 
 <!-- All ARTICLES -->
 <div class="mt3rem">
-    <div class="page-width-sizing all-articles">
-        <h2>Latest Music News Articles</h2>
-        <div>
-            <label for="genre">Genre: </label>
-            <select class="genre-select">
-                <option>All</option>
-                <option>Hip Hop/Rap</option>
-                <option>Pop</option>
-                <option>Rock</option>
-                <option>Alternative</option>
-                <option>Rock</option>
-                <option>Electronic</option>
-                <option>Jazz</option>
-                <option>Metal</option>
-            </select>
-        </div>
+    <div class="page-width-sizing all-articles" id="articles-container">
+        <h2>All Pop Up News Articles</h2>
         {% for article in articles %}
         <article class="article-box">
             <div class="articles-img-box">
@@ -72,6 +58,24 @@ block content %}
             </div>
         </article>
         {%endfor%}
+        <div class="pagination">
+            <a href="/articles">&laquo;</a>
+            {% if has_prev %}
+                <a href="/articles/page/{{ prev_page }}">Previous</a>
+            {% endif %}
+
+            {% for page_num in range(1, total_pages + 1) %}
+                {% if page_num == current_page %}
+                    <a class="active">{{ page_num }}</a>
+                {% else %}
+                    <a href="/articles/page/{{ page_num }}">{{ page_num }}</a>
+                {% endif %}
+            {% endfor %}
+            {% if has_next %}
+                <a href="/articles/page/{{ next_page }}">Next</a>
+            {% endif %}
+            <a href="/articles/page/{{ total_pages }}">&raquo;</a>
+        </div>
     </div>
     <div class="page-width-sizing"></div>
 </div>

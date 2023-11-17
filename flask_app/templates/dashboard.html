@@ -6,9 +6,50 @@ content %}
         <div class="grid-row-3-first border-right">
             <div class="user-widget">
                 <!-- <img src="{{ url_for('static', filename='imgs/johntran1.jpg') }}" class="user-pic" /> -->
-                <p>{{user.username}}</p>
-                <p>{{user.favorite_artists|length}} Favorite Artists</p>
-                <p><span id="article-count">{{user.liked_articles|length}}</span> Favorite Articles</p>
+                <p>Welcome {{user.username}}</p>
+                <p>Favorite Artists:  {{user.favorite_artists|length}} </p>
+                <p>Favorite Articles: <span id="article-count">{{user.liked_articles|length}}</span></p>
+                {% if featured %}
+                {% for article in featured[2:4] %}
+                <article class="border-bottom">
+                    <a href="/articles/{{article.id}}">
+                        <img src="{{article.image}}" width="100%" />
+                    </a>
+    
+                    <h1>
+                        <a href="/articles/{{article.id}}" class="links">{{article.title}}</a>
+    
+                    </h1>
+                    <p>{{article.source_name}}</p>
+                    <p>{{article.published_at}}</p>
+                    <div class="like-comment-div">
+                        {% if session['userid'] not in article.user_likes %}
+                        <form class="likeForm" method="POST">
+                            <div class="likes-count">{{article.likes}}</div>
+                            <input type="hidden" value="FALSE" name="liked">
+                            <input type="hidden" value="{{article.id}}" name="article_id">
+                            <button class="simple-like"><i class="fa-regular fa-thumbs-up thumb"></i></button>
+                        </form>
+                        {% else %}
+                        <form class="likeForm" method="POST">
+    
+                            <div class="likes-count">{{article.likes}}</div>
+                            <input type="hidden" value="TRUE" name="liked">
+                            <input type="hidden" value="{{article.id}}" name="article_id">
+                            <button class="simple-like"><i class="fa-solid fa-thumbs-up thumb"></i></button>
+    
+                        </form>
+                        {% endif %}
+    
+                        {{article.comment_count}}
+                        <a href="/articles/{{article.id}}" class="simple-like links">
+                            <i class="fa-solid fa-comment"></i>
+                        </a>
+                    </div>
+                </article>
+                {%endfor%}
+                {% endif %}
+
             </div>
         </div>
         <div class="grid-span-6 border-right">
@@ -97,7 +138,7 @@ content %}
         <div class="grid-row-end-2">
             <h3>Top Articles</h3>
             <hr />
-            {% for article in featured[2:6] %}
+            {% for article in featured[4:8] %}
             <article class="top-articles">
                 <div>
                     <a href="/articles/{{article.id}}" class="links">
@@ -166,7 +207,7 @@ content %}
 
     <div class="mt3rem">
         <div class="page-width-sizing all-articles">
-            <h2>Pop Up Music News Favored Articles</h2>
+            <h2>Latest Music News</h2>
             {% for article in articles %}
             <article class="article-box">
                 <div class="articles-img-box">

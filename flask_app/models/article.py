@@ -24,6 +24,11 @@ class Article:
         self.user_likes = []
         self.comment_count = 0
 
+    @classmethod
+    def get_articles_count(cls):
+        query = 'SELECT COUNT(*) AS total_articles FROM articles;'
+        results = connectToMySQL(cls.db).query_db(query)
+        return results[0]['total_articles']
 
     @classmethod
     def add_article(cls,data):
@@ -55,7 +60,32 @@ class Article:
             articles.append(one_article)
         return articles
 
-    
+    @classmethod
+    def get_paginated_articles(cls,page=1, per_page=10):
+        offset = (page - 1) * per_page
+        query = '''
+            SELECT articles.*, COUNT(DISTINCT article_likes.user_id) AS likes_count, COUNT(DISTINCT comments.id) AS comment_count
+            FROM articles
+            LEFT JOIN article_likes ON article_likes.article_id = articles.id
+            LEFT JOIN comments ON comments.article_id = articles.id
+            GROUP BY articles.id
+            ORDER BY articles.created_at DESC
+            LIMIT %(per_page)s OFFSET %(page)s;
+        '''
+        data = {
+            'per_page' : per_page,
+            'page': offset
+        }
+        results = connectToMySQL(cls.db).query_db(query,data)
+        articles = []
+        for article in results:
+            one_article = cls(article)
+            one_article.likes = article['likes_count']
+            one_article.comment_count = article['comment_count']
+            one_article.user_likes = article_like.ArticleLike.get_users_id_by_article_id(article['id'])
+            articles.append(one_article)
+        return articles
+
     @classmethod
     def get_featured_articles(cls):
         query = '''

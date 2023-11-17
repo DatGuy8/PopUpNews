@@ -25,6 +25,11 @@ const swiper = new Swiper(".swiper", {
     },
 });
 
+function scrollToArticles() {
+    var articleContainer = document.getElementById('articles-container');
+    articleContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const replyButtons = document.querySelectorAll('.reply-button');
     const replyForms = document.querySelectorAll('.reply-form');

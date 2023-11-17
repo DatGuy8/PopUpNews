@@ -12,6 +12,12 @@ class Artist:
         self.updated_at = data['updated_at']
     
     @classmethod
+    def get_artists_count(cls):
+        query = 'SELECT COUNT(*) AS total_artists FROM artists;'
+        results = connectToMySQL(cls.db).query_db(query)
+        return results[0]['total_artists']
+
+    @classmethod
     def add_artist(cls,data):
         query = '''
             INSERT INTO artists
@@ -42,4 +48,20 @@ class Artist:
             artists.append(cls(artist))
         return artists
     
-
+    @classmethod
+    def get_paginated_artists(cls,page=1,per_page=10):
+        offset = (page-1) * per_page
+        query = '''
+            SELECT * FROM artists
+            ORDER BY name ASC
+            LIMIT %(per_page)s OFFSET %(page)s;
+        '''
+        data = {
+            'per_page' : per_page,
+            'page': offset
+        }
+        results = connectToMySQL(cls.db).query_db(query,data)
+        artists = []
+        for artist in results:
+            artists.append(cls(artist))
+        return artists

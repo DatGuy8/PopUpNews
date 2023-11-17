@@ -34,14 +34,25 @@ def search_artist():
             searchedArtist = {}
 
     artists = Artist.get_all_artists()
-    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists, artist_name=artist_name,searchPage=True)
+    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists, artist_name=artist_name, searchPage=True)
 
+@app.route('/artists',defaults={'page':1})
+@app.route('/artists/page/<int:page>')
+def all_artists_page(page):
+    per_page = 10
+    artists = Artist.get_paginated_artists(page,per_page)
+    total_artists = Artist.get_artists_count()
+    total_pages = total_artists // per_page
+    if total_artists % per_page != 0:
+        total_pages += 1
+    
+    has_prev = page > 1
+    has_next = page < total_pages
+    prev_page = page - 1 if has_prev else None
+    next_page = page + 1 if has_next else None
 
-@app.route('/artists')
-def all_artists_page():
-    artists = Artist.get_all_artists()
     searchedArtist = {}
-    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists,searchPage=False)
+    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists, searchPage=False, total_pages=total_pages, has_prev=has_prev, has_next=has_next, prev_page=prev_page, next_page=next_page,current_page=page)
 
 
 @app.route('/artist/add', methods=['POST'])
@@ -75,14 +86,14 @@ def one_artist_page(artist_id):
     return render_template('single_artist_page.html', artist=artist, articles=articles, user=user)
 
 
-@app.route('/artists/favorite/<int:artist_id>',methods=['POST'])
+@app.route('/artists/favorite/<int:artist_id>', methods=['POST'])
 def add_favourite_artist(artist_id):
     if 'userid' not in session:
         return redirect('/login')
-    
+
     user_id = session['userid']
 
-    FavoriteArtist.add(user_id,artist_id)
+    FavoriteArtist.add(user_id, artist_id)
 
     print('added artists to favorites')
     return redirect('/artists/' + str(artist_id))
