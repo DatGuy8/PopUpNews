@@ -6,9 +6,11 @@ content %}
         <div class="grid-row-3-first border-right">
             <div class="user-widget">
                 <!-- <img src="{{ url_for('static', filename='imgs/johntran1.jpg') }}" class="user-pic" /> -->
-                <p>Welcome {{user.username}}</p>
-                <p>Favorite Artists:  {{user.favorite_artists|length}} </p>
-                <p>Favorite Articles: <span id="article-count">{{user.liked_articles|length}}</span></p>
+                <div class="user-info">
+                    <p>Welcome {{user.username.upper()}}</p>
+                    <p>Favorite Artists:  {{user.favorite_artists|length}} </p>
+                    <p>Favorite Articles: <span id="article-count">{{user.liked_articles|length}}</span></p>
+                </div>
                 {% if featured %}
                 {% for article in featured[2:4] %}
                 <article class="border-bottom">
