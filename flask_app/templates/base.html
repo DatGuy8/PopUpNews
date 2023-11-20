@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <nav>
+    <nav id="navbar">
         <div id="top-nav">
-            <div class="menu-button" onclick="toggleNavLinks()">
+            <div class="menu-button" id="menu-button" onclick="toggleNavLinks()">
                 <i class="fa fa-bars"></i>
             </div>
             <h1 id="PopUpNews-Logo"><a href="/dashboard">POP UP NEWS</a></h1>
@@ -32,8 +32,19 @@
                 </ul>
             </div>
         </div>
+        <div id="modal-links" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <ul>
+                    <li><a href="/users/{{session['userid']}}">My Page</a></li>
+                    <li><a href="/user/feed">Your Feed</a></li>
+                    <li><a href="/articles">Articles</a></li>
+                    <li><a href="/artists">Artists</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-
     {% block content %}{% endblock %}
     <div id="push"></div>
     <footer id="footer">
