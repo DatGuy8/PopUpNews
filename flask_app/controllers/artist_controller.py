@@ -8,35 +8,8 @@ import os
 
 import requests
 
-
-@app.route('/artist/search')
-def search_artist():
-    artist_name = request.args.get('artist_name')
-    print(artist_name)
-
-    url = "https://theaudiodb.p.rapidapi.com/search.php"
-
-    querystring = {"s": artist_name}
-
-    headers = {
-        "X-RapidAPI-Key": os.environ.get('RAPID_API_KEY'),
-        "X-RapidAPI-Host": "theaudiodb.p.rapidapi.com"
-    }
-
-    response = requests.get(url, headers=headers, params=querystring)
-    searchedArtist = {}
-
-    if response.status_code == 200:
-        returnArtist = response.json().get('artists')
-        if returnArtist is not None and len(returnArtist) > 0:
-            searchedArtist = returnArtist[0]
-        else:
-            searchedArtist = {}
-
-    artists = Artist.get_all_artists()
-    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists, artist_name=artist_name, searchPage=True)
-
 @app.route('/artists',defaults={'page':1})
+@app.route('/artist/search',defaults={'page':1})
 @app.route('/artists/page/<int:page>')
 def all_artists_page(page):
     per_page = 10
@@ -50,9 +23,34 @@ def all_artists_page(page):
     has_next = page < total_pages
     prev_page = page - 1 if has_prev else None
     next_page = page + 1 if has_next else None
-
     searchedArtist = {}
-    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists, searchPage=False, total_pages=total_pages, has_prev=has_prev, has_next=has_next, prev_page=prev_page, next_page=next_page,current_page=page)
+    searchPage=False
+
+    if(request.args.get('artist_name')):
+        searchPage=True
+        artist_name = request.args.get('artist_name')
+        print(artist_name)
+
+        url = "https://theaudiodb.p.rapidapi.com/search.php"
+
+        querystring = {"s": artist_name}
+
+        headers = {
+            "X-RapidAPI-Key": os.environ.get('RAPID_API_KEY'),
+            "X-RapidAPI-Host": "theaudiodb.p.rapidapi.com"
+        }
+
+        response = requests.get(url, headers=headers, params=querystring)
+        searchedArtist = {}
+
+        if response.status_code == 200:
+            returnArtist = response.json().get('artists')
+            if returnArtist is not None and len(returnArtist) > 0:
+                searchedArtist = returnArtist[0]
+            else:
+                searchedArtist = {}
+
+    return render_template('all_artists_page.html', searchedArtist=searchedArtist, artists=artists, searchPage=searchPage, total_pages=total_pages, has_prev=has_prev, has_next=has_next, prev_page=prev_page, next_page=next_page,current_page=page)
 
 
 @app.route('/artist/add', methods=['POST'])

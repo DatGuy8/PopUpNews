@@ -30,10 +30,7 @@
     <section id="content-admin">
         <div class="navigation">
             <div>
-                <div class="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search" />
-                </div>
+                <h1>PopUpNews Admin Pages</h1>
             </div>
             <div class="profile">
                 <i class="fa-solid fa-bell"></i>
@@ -44,6 +41,7 @@
             </div>
         </div>
         {% block content %}{% endblock %}
+        <script src="{{url_for('static', filename='js/admin_articles.js')}}"></script>
     </section>
 </body>
 </html>
