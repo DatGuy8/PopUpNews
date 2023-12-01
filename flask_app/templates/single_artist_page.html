@@ -59,10 +59,9 @@
                     src="{{article.image}}" />
             </div>
             <div class="articles-info">
-                <h1>{{article.title}}</h1>
+                <h1><a href="{{article.url}}" class="links" target="_blank">{{article.title}}</a></h1>
                 <p>{{article.source.name}}</p>
                 <p>{{article.publishedAt}}</p>
-                <p>23 <i class="fa fa-thumbs-up"></i> 100<i style='font-size:24px' class='far'>&#xf075;</i></p>
             </div>
         </article>
         {%endfor%}
