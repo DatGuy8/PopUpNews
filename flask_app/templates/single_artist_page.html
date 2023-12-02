@@ -36,22 +36,8 @@
 <!-- All ARTICLES -->
 <div class="mt3rem">
     <div class="page-width-sizing all-articles">
-        <h2>Latest {{artist.name}} News Articles</h2>
-        <div>
-
-            <label for="genre">Genre: </label>
-            <select class="genre-select">
-                <option>All</option>
-                <option>Hip Hop/Rap</option>
-                <option>Pop</option>
-                <option>Rock</option>
-                <option>Alternative</option>
-                <option>Rock</option>
-                <option>Electronic</option>
-                <option>Jazz</option>
-                <option>Metal</option>
-            </select>
-        </div>
+        <h2>Latest {{artist.name}} News From Around The Web</h2>
+        
         {% for article in articles%}
         <article class="article-box">
             <div class="articles-img-box">

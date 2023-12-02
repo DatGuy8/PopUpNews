@@ -5,12 +5,12 @@ content %}
     <h2 class="text-center">All Artists</h2>
     <div class="all-artists-div">
         {%for artist in artists %}
-        
+
         <div class="one-artist">
-            <img src="{{artist.picture}}" />
-            <div class="text-center">
-                <p>{{artist.name}}</p>
-            </div>
+            <a href="/artists/{{artist.id}}"><img src="{{artist.picture}}" /></a>
+            <a href="/artists/{{artist.id}}" class="links">
+                <p class="text-center">{{artist.name}}</p>
+            </a>
         </div>
         {%endfor%}
     </div>
@@ -19,7 +19,7 @@ content %}
         {% if has_prev %}
         <a href="/artists/page/{{ prev_page }}">Previous</a>
         {% endif %}
-        
+
         {% for page_num in range(1, total_pages + 1) %}
         {% if page_num == current_page %}
         <a class="active">{{ page_num }}</a>

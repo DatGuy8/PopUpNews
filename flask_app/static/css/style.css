@@ -388,6 +388,15 @@
     }
 }
 
+.articles-info h1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines to display */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    /* Set the maximum width or percentage width to limit the title length */
+    /* For example, if you want to limit the title width to 80% of the container */
+    max-width: 80%;
+}
 .all-articles {
     display: flex;
     flex-direction: column;
