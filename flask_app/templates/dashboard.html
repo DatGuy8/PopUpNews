@@ -8,7 +8,7 @@ content %}
                 <!-- <img src="{{ url_for('static', filename='imgs/johntran1.jpg') }}" class="user-pic" /> -->
                 <div class="user-info">
                     <p>Welcome {{user.username.upper()}}</p>
-                    <p>Favorite Artists:  {{user.favorite_artists|length}} </p>
+                    <p>Favorite Artists: {{user.favorite_artists|length}} </p>
                     <p>Favorite Articles: <span id="article-count">{{user.liked_articles|length}}</span></p>
                 </div>
                 {% if featured %}
@@ -17,10 +17,10 @@ content %}
                     <a href="/articles/{{article.id}}">
                         <img src="{{article.image}}" width="100%" />
                     </a>
-    
-                    <h1>
+
+                    <h1  class="shorten-title">
                         <a href="/articles/{{article.id}}" class="links">{{article.title}}</a>
-    
+
                     </h1>
                     <p>{{article.source_name}}</p>
                     <p>{{article.published_at}}</p>
@@ -34,15 +34,15 @@ content %}
                         </form>
                         {% else %}
                         <form class="likeForm" method="POST">
-    
+
                             <div class="likes-count">{{article.likes}}</div>
                             <input type="hidden" value="TRUE" name="liked">
                             <input type="hidden" value="{{article.id}}" name="article_id">
                             <button class="simple-like"><i class="fa-solid fa-thumbs-up thumb"></i></button>
-    
+
                         </form>
                         {% endif %}
-    
+
                         {{article.comment_count}}
                         <a href="/articles/{{article.id}}" class="simple-like links">
                             <i class="fa-solid fa-comment"></i>

@@ -22,7 +22,7 @@ function searchArticles() {
                     'image': article.image,
                     'published_at': article.publishedAt,
                     'source_url': article.source.url,
-                    'priority': '0'
+                    'priority': 0
                 };
 
 
