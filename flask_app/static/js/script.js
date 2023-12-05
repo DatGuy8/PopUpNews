@@ -109,3 +109,21 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 };
+
+// Get the navbar
+var navbar = document.getElementById("top-nav");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Function to handle scroll event
+function handleScroll() {
+    if (window.scrollY > sticky) {
+        navbar.classList.add("small");
+    } else {
+        navbar.classList.remove("small");
+    }
+}
+
+// Attach scroll event listener
+window.addEventListener("scroll", handleScroll);
