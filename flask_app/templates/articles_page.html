@@ -1,12 +1,13 @@
-{% extends 'base_articles.html' %} {% block title %}Pop Up Articles{% endblock %} {%
+{% extends 'base.html' %} {% block title %}Pop Up Articles{% endblock %} {%
 block content %}
+<div>
 
-<div class="dark-main-container">
-    <article class="page-width-sizing dark-main-content">
+    <div class="dark-main-container">
+        <article class="page-width-sizing dark-main-content">
         <div class="half-content">
             <a href="/articles/{{featured[0].id}}">
                 <img src="{{featured[0].image}}"
-                    alt="featured article pic" />
+                alt="featured article pic" />
             </a>
         </div>
         <div class="half-content">
@@ -49,7 +50,7 @@ block content %}
         <article class="article-box">
             <div class="articles-img-box">
                 <img
-                    src="{{article.image}}" />
+                src="{{article.image}}" />
             </div>
             <div class="articles-info">
                 <h1>{{article.title}}</h1>
@@ -61,23 +62,24 @@ block content %}
         <div class="pagination">
             <a href="/articles">&laquo;</a>
             {% if has_prev %}
-                <a href="/articles/page/{{ prev_page }}">Previous</a>
+            <a href="/articles/page/{{ prev_page }}">Previous</a>
             {% endif %}
-
+            
             {% for page_num in range(1, total_pages + 1) %}
-                {% if page_num == current_page %}
-                    <a class="active">{{ page_num }}</a>
-                {% else %}
-                    <a href="/articles/page/{{ page_num }}">{{ page_num }}</a>
-                {% endif %}
+            {% if page_num == current_page %}
+            <a class="active">{{ page_num }}</a>
+            {% else %}
+            <a href="/articles/page/{{ page_num }}">{{ page_num }}</a>
+            {% endif %}
             {% endfor %}
             {% if has_next %}
-                <a href="/articles/page/{{ next_page }}">Next</a>
+            <a href="/articles/page/{{ next_page }}">Next</a>
             {% endif %}
             <a href="/articles/page/{{ total_pages }}">&raquo;</a>
         </div>
     </div>
     <div class="page-width-sizing"></div>
+</div>
 </div>
 
 {% endblock %}

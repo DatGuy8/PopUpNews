@@ -13,9 +13,10 @@
 
 </head>
 
-<body>
+<body {% if current_page is defined and current_page > 1 %} onload="scrollToArticles()" {% endif %}>
     <nav id="navbar">
         <div id="top-nav">
+            <div class="spacer" id="spacer"></div>
             <div class="menu-button" id="menu-button" onclick="toggleNavLinks()">
                 <i class="fa fa-bars"></i>
             </div>

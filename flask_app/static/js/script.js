@@ -111,12 +111,14 @@ window.onclick = function (event) {
 };
 
 // Get the navbar
-var topNav = document.getElementById("top-nav");
-var bottomNav = document.getElementById("bottom-nav");
-var popUpLogo = document.getElementById("PunLink");
+let topNav = document.querySelector("#top-nav");
+let bottomNav = document.querySelector("#bottom-nav");
+let popUpLogo = document.querySelector("#PunLink");
+let menuButton = document.querySelector("#menu-button");
+let spacer = document.querySelector('#spacer');
 
 // Get the offset position of the topNav
-var sticky = topNav.offsetTop;
+let sticky = topNav.offsetTop;
 
 // Function to handle scroll event
 function handleScroll() {
@@ -124,10 +126,19 @@ function handleScroll() {
         topNav.classList.add("small");
         bottomNav.classList.add("small");
         popUpLogo.classList.add("small");
+        menuButton.style.display = 'block';
+        spacer.style.display = "none";
     } else {
         topNav.classList.remove("small");
         bottomNav.classList.remove("small");
         popUpLogo.classList.remove("small");
+        if (window.innerWidth < 1023) {
+            menuButton.style.display = 'block';
+        } else {
+            menuButton.style.display = 'none';
+            spacer.style.display = "block";
+        }
+        
     }
 }
 

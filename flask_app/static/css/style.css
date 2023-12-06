@@ -22,31 +22,24 @@
 } */
 /* BASE.HTML */
 #top-nav.small {
-    /* position: fixed;
-    z-index: 1000;
     width: 100vw;
-    height: 85px;
+    height: 70px;
     background-color: black;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease; */
-    width: 100vw;
-        height: 70px;
-        background-color: black;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        transition: height 0.5s ease, justify-content 0.5s ease;
+    justify-content: space-around;
+    transition: height 0.5s ease, justify-content 0.5s ease;
 }
 
-#bottom-nav.small{
+#bottom-nav.small {
     transition: all 0.2s ease;
     display: none;
 }
-
+.spacer {
+    display: none;
+}
+/* =========BIGGER SCREEN========= */
 @media screen and (min-width: 1024px) {
     #top-nav {
         position: fixed;
@@ -57,7 +50,7 @@
         box-sizing: border-box;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-around;
         transition: all 0.2s ease;
     }
     #PopUpNews-Logo a {
@@ -67,14 +60,10 @@
         text-decoration: none;
     }
 
-    #PopUpNews-Logo{
-        align-self: center;
-    }
-    
     #PopUpNews-Logo a:hover {
         font-size: 3.1rem;
     }
-    #PunLink.small{
+    #PunLink.small {
         color: white;
         font-size: 2.5rem;
         font-family: "Bebas Neue", sans-serif;
@@ -84,42 +73,26 @@
     #PunLink.small:hover {
         font-size: 2.6rem;
     }
+    .spacer {
+        display: block;
+    }
+    .search-button i{
+        font-size: 1.5rem;
+    }
 }
-
-/* @media screen and (max-width: 1023px) and (min-width: 768px) {
-    #top-nav {
-        width: 100vw;
-        height: 85px;
-        background-color: black;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: height 0.2s ease;
-    }
-    #PopUpNews-Logo a {
-        color: white;
-        font-size: 2.5rem;
-        font-family: "Bebas Neue", sans-serif;
-        text-decoration: none;
-    }
-    
-    #PopUpNews-Logo a:hover {
-        font-size: 2.6rem;
-    }
-} */
-
 
 
 @media screen and (max-width: 1023px) {
     #top-nav {
+        position: fixed;
+        z-index: 1000;
         width: 100vw;
         height: 70px;
         background-color: black;
         box-sizing: border-box;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-around;
         transition: height 0.5s ease, justify-content 0.5s ease;
     }
 
@@ -136,18 +109,17 @@
 
     .menu-button {
         padding-left: 1rem;
+        display: block;
     }
 
     .menu-button:hover {
         color: #b3b3b3;
         cursor: pointer;
     }
-    
 }
 
-.search-button{
+.search-button {
     color: white;
-    align-self: flex-end;
 }
 
 #bottom-nav {
@@ -181,7 +153,7 @@
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
@@ -515,7 +487,7 @@
 /* ===========================ARTICLES PAGE=========================== */
 .dark-main-container {
     width: 100%;
-
+    padding-top: 200px;
     background-color: #2b2b2b;
     display: flex;
     align-items: center;
@@ -574,7 +546,7 @@
     justify-content: space-between;
 }
 
-.small-4-featured>article {
+.small-4-featured > article {
     width: 18rem;
 }
 
@@ -704,7 +676,7 @@
     justify-content: space-between;
 }
 
-.small-4-featured>article {
+.small-4-featured > article {
     width: 18rem;
 }
 
