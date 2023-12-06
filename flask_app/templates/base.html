@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/fbe3633b01.js" crossorigin="anonymous"></script>
     <!-- Swiper carousel -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    
+
 </head>
 
 <body>
@@ -19,7 +19,8 @@
             <div class="menu-button" id="menu-button" onclick="toggleNavLinks()">
                 <i class="fa fa-bars"></i>
             </div>
-            <h1 id="PopUpNews-Logo"><a href="/dashboard">POP UP NEWS</a></h1>
+            <h1 id="PopUpNews-Logo"><a href="/dashboard" id="PunLink">POP UP NEWS</a></h1>
+            <div class="search-button"><i class="fa-solid fa-magnifying-glass"></i></div>
         </div>
         <div id="bottom-nav">
             <div id="nav-links">
@@ -50,18 +51,18 @@
     <footer id="footer">
         <div class="page-width-sizing">
 
-            <a href="#top-nav"
-            class="mt3rem">Back To Top</a>
+            <a href="#top-nav" class="mt3rem">Back To Top</a>
         </div>
         <div class="page-width-sizing">
             <p class="mt3rem">
-                @Copyright Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi vel tempore a dolore placeat animi!
+                @Copyright Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi vel tempore a dolore
+                placeat animi!
                 Suscipit, perferendis repudiandae. Harum repellat reprehenderit dolor labore tempore id magni animi eos!
                 Corrupti, rerum!
             </p>
         </div>
     </footer>
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="{{url_for('static', filename='js/script.js')}}"></script>

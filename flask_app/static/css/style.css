@@ -9,17 +9,44 @@
     font-family: "Headland One", serif;
     box-sizing: border-box;
 }
-#navbar {
+
+/* #navbar {
     position: fixed;
     width: 100%;
-    z-index: 1000; /* To ensure it stays on top */
+    z-index: 1000;
     transition: all 0.3s ease;
 }
 #navbar.small {
-    padding: 10px 0; /* Adjust padding or other properties to make it smaller */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
-}
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+} */
 /* BASE.HTML */
+#top-nav.small {
+    /* position: fixed;
+    z-index: 1000;
+    width: 100vw;
+    height: 85px;
+    background-color: black;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease; */
+    width: 100vw;
+        height: 70px;
+        background-color: black;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        transition: height 0.5s ease, justify-content 0.5s ease;
+}
+
+#bottom-nav.small{
+    transition: all 0.2s ease;
+    display: none;
+}
+
 @media screen and (min-width: 1024px) {
     #top-nav {
         position: fixed;
@@ -30,35 +57,61 @@
         box-sizing: border-box;
         display: flex;
         align-items: center;
-        justify-content: center;
-        transition: all 0.5s ease;
+        justify-content: space-between;
+        transition: all 0.2s ease;
+    }
+    #PopUpNews-Logo a {
+        color: white;
+        font-size: 3rem;
+        font-family: "Bebas Neue", sans-serif;
+        text-decoration: none;
+    }
+
+    #PopUpNews-Logo{
+        align-self: center;
+    }
+    
+    #PopUpNews-Logo a:hover {
+        font-size: 3.1rem;
+    }
+    #PunLink.small{
+        color: white;
+        font-size: 2.5rem;
+        font-family: "Bebas Neue", sans-serif;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    #PunLink.small:hover {
+        font-size: 2.6rem;
     }
 }
-@media screen and (max-width: 1023px) and (min-width: 768px) {
+
+/* @media screen and (max-width: 1023px) and (min-width: 768px) {
     #top-nav {
         width: 100vw;
-        height: 100px;
+        height: 85px;
         background-color: black;
         box-sizing: border-box;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: height 0.5s ease;
+        transition: height 0.2s ease;
     }
-}
+    #PopUpNews-Logo a {
+        color: white;
+        font-size: 2.5rem;
+        font-family: "Bebas Neue", sans-serif;
+        text-decoration: none;
+    }
+    
+    #PopUpNews-Logo a:hover {
+        font-size: 2.6rem;
+    }
+} */
 
-#PopUpNews-Logo a {
-    color: white;
-    font-size: 3rem;
-    font-family: "Bebas Neue", sans-serif;
-    text-decoration: none;
-}
 
-#PopUpNews-Logo a:hover {
-    font-size: 3.1rem;
-}
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1023px) {
     #top-nav {
         width: 100vw;
         height: 70px;
@@ -66,7 +119,7 @@
         box-sizing: border-box;
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: space-between;
         transition: height 0.5s ease, justify-content 0.5s ease;
     }
 
@@ -80,16 +133,22 @@
     #PopUpNews-Logo a:hover {
         font-size: 2.1rem;
     }
+
     .menu-button {
-        margin: 1rem;
+        padding-left: 1rem;
     }
+
     .menu-button:hover {
         color: #b3b3b3;
         cursor: pointer;
     }
+    
 }
 
-
+.search-button{
+    color: white;
+    align-self: flex-end;
+}
 
 #bottom-nav {
     display: none;
@@ -99,7 +158,8 @@
     color: white;
     display: block;
 }
-@media screen and (min-width: 768px) {
+
+@media screen and (min-width: 1024px) {
     #bottom-nav {
         position: fixed;
         z-index: 1000;
@@ -112,6 +172,7 @@
         justify-content: center;
         margin-top: 125px;
     }
+
     .menu-button {
         display: none;
     }
@@ -212,6 +273,7 @@
     .two-form-div {
         display: flex;
         justify-content: space-around;
+        padding-top: 135px;
     }
 }
 
@@ -220,6 +282,7 @@
     flex-direction: column;
     margin-top: 1rem;
 }
+
 .form-div input {
     height: 2rem;
 }
@@ -229,9 +292,11 @@
     background-color: #2b2b2b;
     color: white;
 }
+
 .codered {
     color: red;
 }
+
 .rounded {
     border-radius: 0.3rem;
 }
@@ -243,6 +308,7 @@
     border: none;
     background-color: white;
 }
+
 .simple-like:hover {
     cursor: pointer;
     font-size: 1.1rem;
@@ -269,6 +335,7 @@
     color: black;
     text-decoration: none;
 }
+
 .links:hover {
     text-decoration: underline;
 }
@@ -292,15 +359,18 @@
         grid-template-columns: repeat(12, 1fr);
         gap: 1rem;
     }
+
     .border-right {
         border-right: 1px solid #b3b3b3;
         padding-right: 10px;
     }
+
     .grid-container-6 {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         gap: 1rem;
     }
+
     .article-box {
         height: 200px;
 
@@ -309,17 +379,20 @@
         gap: 3rem;
     }
 }
+
 @media screen and (max-width: 1023px) {
     .grid-container-12 {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
+
     .grid-container-6 {
         display: flex;
         flex-direction: column-reverse;
         gap: 1rem;
     }
+
     .article-box {
         width: 100%;
     }
@@ -332,6 +405,7 @@
 .grid-span-6 {
     grid-column: span 6;
 }
+
 .border-bottom {
     border-bottom: 1px solid #b3b3b3;
 }
@@ -395,14 +469,17 @@
         display: flex;
         gap: 3rem;
     }
+
     .articles-img-box {
         width: 50%;
     }
+
     .articles-info {
         width: 50%;
         padding: 20px;
     }
 }
+
 @media screen and (max-width: 1023px) {
     .article-box {
         width: 100%;
@@ -412,13 +489,15 @@
 .shorten-title,
 .articles-info h1 {
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Number of lines to display */
+    -webkit-line-clamp: 3;
+    /* Number of lines to display */
     -webkit-box-orient: vertical;
     overflow: hidden;
     /* Set the maximum width or percentage width to limit the title length */
     /* For example, if you want to limit the title width to 80% of the container */
     max-width: 100%;
 }
+
 .all-articles {
     display: flex;
     flex-direction: column;
@@ -441,9 +520,11 @@
     display: flex;
     align-items: center;
 }
+
 .text-white {
     color: white;
 }
+
 .half-content {
     height: 100%;
     color: white;
@@ -493,7 +574,7 @@
     justify-content: space-between;
 }
 
-.small-4-featured > article {
+.small-4-featured>article {
     width: 18rem;
 }
 
@@ -562,6 +643,7 @@
     gap: 1rem;
     margin-top: 1rem;
 }
+
 .one-artist {
     height: 250px;
 }
@@ -621,9 +703,11 @@
     display: flex;
     justify-content: space-between;
 }
-.small-4-featured > article {
+
+.small-4-featured>article {
     width: 18rem;
 }
+
 .small-4-featured article div img {
     width: 100%;
 }
@@ -652,6 +736,7 @@
     background-color: #2b2b2b;
     color: #f7f7f7;
 }
+
 .filter-button:hover {
     background-color: black;
 }
@@ -668,10 +753,12 @@
     margin-inline: auto;
     width: 300px;
 }
+
 .search-artist-form input {
     padding: 10px;
     border-radius: 0.5rem;
 }
+
 .search-artist-form button {
     padding: 10px;
     border-radius: 0.5rem;
@@ -693,6 +780,7 @@
 
     margin: 10px;
 }
+
 .one-artist img {
     width: 100%;
 }
@@ -703,6 +791,7 @@
 .comment-input-div {
     width: 100%;
 }
+
 .comment-box {
     width: 100%;
     height: 5rem;
@@ -713,6 +802,7 @@
     display: flex;
     gap: 1rem;
 }
+
 .like-comment-div form {
     display: flex;
     gap: 0.5rem;
@@ -732,13 +822,16 @@
 .comment-form {
     width: 100%;
 }
+
 .comment-form form {
     display: flex;
     gap: 1rem;
 }
+
 .one-article-page-img {
     width: 100%;
 }
+
 @media screen and (min-width: 768px) {
     #main-one-article {
         width: 100%;
@@ -767,6 +860,7 @@
     width: 90%;
     margin: 0 auto;
 }
+
 #article-content p {
     margin-top: 1rem;
 }
@@ -788,6 +882,7 @@
     gap: 1rem;
     width: 100%;
 }
+
 .comment-div {
     width: 100%;
 }
@@ -797,6 +892,7 @@
 .top-content-userpage {
     width: 100%;
 }
+
 .right-block-userpage {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -811,6 +907,7 @@
         display: flex;
         height: fit-content;
     }
+
     .left-block-userpage {
         width: 25%;
     }
@@ -828,6 +925,7 @@
         grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
     }
 }
+
 @media screen and (max-width: 1042px) {
     .fav-artists-userpage {
         display: flex;

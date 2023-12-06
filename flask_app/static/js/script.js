@@ -111,17 +111,23 @@ window.onclick = function (event) {
 };
 
 // Get the navbar
-var navbar = document.getElementById("top-nav");
+var topNav = document.getElementById("top-nav");
+var bottomNav = document.getElementById("bottom-nav");
+var popUpLogo = document.getElementById("PunLink");
 
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
+// Get the offset position of the topNav
+var sticky = topNav.offsetTop;
 
 // Function to handle scroll event
 function handleScroll() {
     if (window.scrollY > sticky) {
-        navbar.classList.add("small");
+        topNav.classList.add("small");
+        bottomNav.classList.add("small");
+        popUpLogo.classList.add("small");
     } else {
-        navbar.classList.remove("small");
+        topNav.classList.remove("small");
+        bottomNav.classList.remove("small");
+        popUpLogo.classList.remove("small");
     }
 }
 
