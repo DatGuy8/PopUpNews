@@ -33,7 +33,7 @@
 }
 
 #bottom-nav.small {
-    transition: all 0.2s ease;
+    transition: all 0.5s ease;
     display: none;
 }
 .spacer {
@@ -51,7 +51,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        transition: all 0.2s ease;
+        transition: all 0.5s ease;
     }
     #PopUpNews-Logo a {
         color: white;
@@ -68,7 +68,7 @@
         font-size: 2.5rem;
         font-family: "Bebas Neue", sans-serif;
         text-decoration: none;
-        transition: all 0.2s ease;
+        transition: all 0.5s ease;
     }
     #PunLink.small:hover {
         font-size: 2.6rem;
@@ -322,10 +322,13 @@
 }
 
 .main-content {
-    padding-top: 200px;
+    
 }
 
 @media screen and (min-width: 1024px) {
+    .nav-bar-space{
+        padding-top: 200px;
+    }
     .grid-container-12 {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -353,6 +356,9 @@
 }
 
 @media screen and (max-width: 1023px) {
+    .nav-bar-space{
+        padding-top: 100px;
+    }
     .grid-container-12 {
         display: flex;
         flex-direction: column;
@@ -487,7 +493,6 @@
 /* ===========================ARTICLES PAGE=========================== */
 .dark-main-container {
     width: 100%;
-    padding-top: 200px;
     background-color: #2b2b2b;
     display: flex;
     align-items: center;
@@ -523,7 +528,11 @@
         flex-wrap: auto;
         height: 25rem;
         overflow: scroll;
-        overflow-x: hidden;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    .half-content:last-child::-webkit-scrollbar {
+        display: none;
     }
 }
 

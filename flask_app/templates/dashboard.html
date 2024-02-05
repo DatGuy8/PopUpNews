@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block title %}Pop Up News{% endblock %} {% block
 content %}
-<div class="main-content">
+<div class="main-content nav-bar-space">
     <!-- Top Div -->
     <div class="grid-container-12 page-width-sizing">
         <div class="grid-row-3-first border-right">
@@ -138,7 +138,7 @@ content %}
             </article>
         </div>
         <div class="grid-row-end-2">
-            <h3>Featured Articles</h3>
+            <h2>Featured Articles</h2>
             <hr />
             {% for article in featured[4:8] %}
             <article class="top-articles">

@@ -1,3 +1,68 @@
+// NAV BAR 
+let topNav = document.querySelector("#top-nav");
+let bottomNav = document.querySelector("#bottom-nav");
+let popUpLogo = document.querySelector("#PunLink");
+let menuButton = document.querySelector("#menu-button");
+let spacer = document.querySelector('#spacer');
+let sticky = 0;
+
+// let sticky = topNav.offsetTop;
+
+// Get the modal
+var modal = document.getElementById("modal-links");
+
+// Get the button that opens the modal
+var btn = document.getElementById("menu-button");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function () {
+    modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
+
+function handleScroll() {
+    let currentScroll = window.scrollY || window.pageYOffset;
+    if (currentScroll > sticky) {
+        topNav.classList.add("small");
+        bottomNav.classList.add("small");
+        popUpLogo.classList.add("small");
+        menuButton.style.display = 'block';
+        spacer.style.display = "none";
+    } else {
+        topNav.classList.remove("small");
+        bottomNav.classList.remove("small");
+        popUpLogo.classList.remove("small");
+        if (window.innerWidth < 1023) {
+            menuButton.style.display = 'block';
+        } else {
+            menuButton.style.display = 'none';
+            spacer.style.display = "block";
+        }
+        
+    }
+
+    sticky = currentScroll <= 0 ? 0 : currentScroll;
+    
+}
+window.addEventListener("scroll", handleScroll);
+
+
+// SWIPER CAROUSEL
 const swiper = new Swiper(".swiper", {
     // How many slides to show
     slidesPerView: 1,
@@ -83,64 +148,3 @@ likeForms.forEach(function (likeForm) {
             });
     };
 });
-
-// Get the modal
-var modal = document.getElementById("modal-links");
-
-// Get the button that opens the modal
-var btn = document.getElementById("menu-button");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function () {
-    modal.style.display = "block";
-};
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-};
-
-// Get the navbar
-let topNav = document.querySelector("#top-nav");
-let bottomNav = document.querySelector("#bottom-nav");
-let popUpLogo = document.querySelector("#PunLink");
-let menuButton = document.querySelector("#menu-button");
-let spacer = document.querySelector('#spacer');
-
-// Get the offset position of the topNav
-let sticky = topNav.offsetTop;
-
-// Function to handle scroll event
-function handleScroll() {
-    if (window.scrollY > sticky) {
-        topNav.classList.add("small");
-        bottomNav.classList.add("small");
-        popUpLogo.classList.add("small");
-        menuButton.style.display = 'block';
-        spacer.style.display = "none";
-    } else {
-        topNav.classList.remove("small");
-        bottomNav.classList.remove("small");
-        popUpLogo.classList.remove("small");
-        if (window.innerWidth < 1023) {
-            menuButton.style.display = 'block';
-        } else {
-            menuButton.style.display = 'none';
-            spacer.style.display = "block";
-        }
-        
-    }
-}
-
-// Attach scroll event listener
-window.addEventListener("scroll", handleScroll);
